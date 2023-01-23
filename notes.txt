@@ -1,4 +1,7 @@
 HOODTECH 
 - A blog focused on telling the story of people from the hood who got into tech. Also, touching on how being from the hood has a unique way of being beneficial or detrimental in the tech space.
 
-- 
+FINAL STEPS FOR THE PRODUCTION LAUNCH
+- run yarn build
+- once the build is finished, run yarn start
+-  
