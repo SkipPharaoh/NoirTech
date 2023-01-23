@@ -11,6 +11,8 @@ const query = groq`*[_type == "post"]{
   categories[]->
 } | order(_createdAt desc)`;
 
+export const revalidate = 60;
+
 export default async function HomePage() {
   if (previewData()) {
     return (

@@ -4,4 +4,4 @@ HOODTECH
 FINAL STEPS FOR THE PRODUCTION LAUNCH
 - run yarn build
 - once the build is finished, run yarn start
--  
+- be sure to add the deployed url to the sanity API CORS origin
