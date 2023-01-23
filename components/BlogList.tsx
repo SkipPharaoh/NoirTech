@@ -8,13 +8,14 @@ type Props = {
 };
 
 export default function BlogList({ posts }: Props) {
-  //   console.log(posts.length);
-
   const Posts = posts.map((post) => {
     const Categories =
       post.categories &&
       post.categories.map((category) => (
-        <div className="bg-[#F7AB0A] text-center text-black px-3 py-1 rounded-full text-sm font-semibold">
+        <div
+          key={category._id}
+          className="bg-[#F7AB0A] text-center text-black px-3 py-1 rounded-full text-sm font-semibold"
+        >
           <p>{category.title}</p>
         </div>
       ));
