@@ -5,9 +5,10 @@ import BlogList from "./BlogList";
 
 type Props = {
   query: string;
+  token: string;
 };
 
-export default function PreviewBlogList({ query }: Props) {
+export default function PreviewBlogList({ query, token }: Props) {
   const posts = usePreview(null, query);
 
   return <BlogList posts={posts} />;

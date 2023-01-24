@@ -1,9 +1,9 @@
-import { previewData } from "next/headers";
 import { groq } from "next-sanity";
-import { client } from "../../lib/sanity.client";
-import PreviewSuspense from "../../components/PreviewSuspense";
-import PreviewBlogList from "../../components/PreviewBlogList";
+import { previewData } from "next/headers";
 import BlogList from "../../components/BlogList";
+import PreviewBlogList from "../../components/PreviewBlogList";
+import PreviewSuspense from "../../components/PreviewSuspense";
+import { client } from "../../lib/sanity.client";
 
 const query = groq`*[_type == "post"]{
   ...,
@@ -13,8 +13,9 @@ const query = groq`*[_type == "post"]{
 
 export const revalidate = 60;
 
+type AppPreviewData = { token: string } | undefined;
 export default async function HomePage() {
-  if (previewData()) {
+  if ((previewData() as AppPreviewData)?.token) {
     return (
       <PreviewSuspense
         fallback={
@@ -25,7 +26,10 @@ export default async function HomePage() {
           </div>
         }
       >
-        <PreviewBlogList query={query} />
+        <PreviewBlogList
+          query={query}
+          token={(previewData() as AppPreviewData)!.token}
+        />
       </PreviewSuspense>
     );
   }
