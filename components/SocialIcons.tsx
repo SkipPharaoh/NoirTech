@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface Props {
   Icons: Icons[];
@@ -7,6 +8,7 @@ interface Props {
 interface Icons {
   name: string;
   link: string;
+  icon: string;
 }
 
 export default function SocialIcons({ Icons }: Props) {
@@ -15,11 +17,16 @@ export default function SocialIcons({ Icons }: Props) {
       {Icons.map((icon) => (
         <span
           key={icon.name}
-          className="p-2 cursor-pointer inline-flex items-center
-        rounded-full bg-gray-700 mx-1.5 text-xl hover:text-gray-100 hover:bg-teal-500
+          className="p-1 cursor-pointer inline-flex items-center
+        rounded-full bg-gray-400 mx-1.5 text-xl hover:text-gray-100 hover:bg-teal-500
         duration-300 "
         >
-          {/* <ion-icon name={icon.name}></ion-icon> */}
+          <Image
+            src={icon.icon && icon.icon}
+            width={20}
+            height={20}
+            alt={icon.name}
+          />
         </span>
       ))}
     </div>
