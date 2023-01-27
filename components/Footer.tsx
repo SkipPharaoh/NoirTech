@@ -16,7 +16,7 @@ export default function Footer() {
       >
         {/* TODO: Add company name to copyright below */}
         <span>&copy; {date} All rights reserved</span>
-        <span>Terms · Privacy Policy</span>
+        <span>&copy; {date} All rights reserved</span>
         <SocialIcons Icons={Icons} />
       </div>
     </footer>

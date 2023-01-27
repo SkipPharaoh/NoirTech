@@ -1,41 +1,42 @@
-export const PRODUCTS = [
-  { name: "Drag And Drop", link: "#" },
-  { name: "Visual Studio X", link: "#" },
-  { name: "Easy Content", link: "#" },
+export const BRANDS = [
+  { name: "Development", link: "#" },
+  { name: "Job Boards", link: "#" },
+  { name: "Products", link: "#" },
+  { name: "Finance", link: "#" },
 ];
-export const RESOURCES = [
-  { name: "Industries and tools", link: "#" },
-  { name: "Use cases", link: "#" },
-  { name: "Blog", link: "#" },
-  { name: "Online evenet", link: "#" },
-  { name: "Nostrud exercitation", link: "#" },
+export const TOPICS = [
+  { name: "Personal Development", link: "#" },
+  { name: "Software Tech", link: "#" },
+  { name: "Careers", link: "#" },
+  { name: "Setup", link: "#" },
 ];
 export const COMPANY = [
-  { name: "Diversity & inclusion", link: "#" },
-  { name: "About us", link: "#" },
+  { name: "Contact Us", link: "#" },
+  { name: "About Us", link: "#" },
   { name: "Press", link: "#" },
-  { name: "Customer Stories", link: "#" },
-  { name: "Online communities", link: "#" },
+  { name: "FAQ", link: "#" },
 ];
-export const SUPPORT = [
-  { name: "Documentation", link: "#" },
-  { name: "Tutorials & guides", link: "#" },
-  { name: "Webinars", link: "#" },
-  { name: "Open-source", link: "#" },
+export const LEGAL = [
+  { name: "Terms & Condition", link: "#" },
+  { name: "Cookies Policy", link: "#" },
+  { name: "Privacy Policy", link: "#" },
+  { name: "Support", link: "#" },
 ];
 
 export const Icons = [
-  //   { name: "logo-facebook", link: "#" },
-  //   { name: "logo-twitter", link: "#" },
+  {
+    name: "logo-twitter",
+    link: "#",
+    icon: "https://img.icons8.com/ios-filled/512/twitter.png",
+  },
   {
     name: "logo-github",
     link: "#",
-    icon: "https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/512/external-github-a-web-based-hosting-service-for-version-control-logo-shadow-tal-revivo.png",
+    icon: "https://img.icons8.com/ios-filled/512/github-2.png",
   },
   {
     name: "logo-linkedin",
     link: "#",
     icon: "https://img.icons8.com/ios-filled/512/linkedin-2.png",
   },
-  //   { name: "logo-instagram", link: "#" },
 ];

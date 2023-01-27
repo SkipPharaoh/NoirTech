@@ -12,8 +12,8 @@ interface Items {
 
 export default function FooterItems({ Links, title }: Props) {
   return (
-    <ul>
-      <h1 className="mb-1 font-semibold">{title}</h1>
+    <ul className="lg:mx-auto">
+      <h1 className="mb-1 font-bold text-lg">{title}</h1>
       {Links.map((link: Items) => (
         <li key={link.name}>
           <a
