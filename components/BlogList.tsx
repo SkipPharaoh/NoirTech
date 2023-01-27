@@ -2,6 +2,7 @@ import Image from "next/image";
 import urlFor from "../lib/urlFor";
 import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 import ClientSideRoute from "./ClientSideRoute";
+import Divider from "./Divider";
 
 type Props = {
   posts: Post[];
@@ -63,10 +64,11 @@ export default function BlogList({ posts }: Props) {
 
   return (
     <div>
-      <hr className="border-[#F7AB0A] mb-10" />
+      <Divider />
       <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
         {Posts}
       </div>
+      <Divider />
     </div>
   );
 }
