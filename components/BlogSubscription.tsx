@@ -4,7 +4,7 @@ export default function BlogSubscription() {
   return (
     <div className="sm:px-12 px-4 bg-[#ffffff19] py-7">
       <h1 className="text-3xl mb-4 font-semibold text-center">
-        <span className="text-teal-400">Free</span> until you're ready to launch
+        <span className="text-teal-400">Subscribe</span> to our blog!
       </h1>
       <div>
         <input
