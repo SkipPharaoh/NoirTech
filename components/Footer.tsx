@@ -10,15 +10,11 @@ export default function Footer() {
     <footer className="bg-white text-black">
       <BlogSubscription />
       <FooterItemsContainer />
-      <div
-        className="grid grid-cols-1 lg:grid-cols-3
-      text-center pt-2 text-black text-sm pb-8"
-      >
+      <div className="flex justify-center py-2 text-black text-sm">
         {/* TODO: Add company name to copyright below */}
         <span>&copy; {date} All rights reserved</span>
-        <span>&copy; {date} All rights reserved</span>
-        <SocialIcons Icons={Icons} />
       </div>
+      <SocialIcons Icons={Icons} />
     </footer>
   );
 }

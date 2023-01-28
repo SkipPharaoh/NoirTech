@@ -12,7 +12,7 @@ export const TOPICS = [
 ];
 export const COMPANY = [
   { name: "Contact Us", link: "#" },
-  { name: "About Us", link: "#" },
+  { name: "Our Story", link: "#" },
   { name: "Press", link: "#" },
   { name: "FAQ", link: "#" },
 ];

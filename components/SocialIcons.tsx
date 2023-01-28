@@ -13,7 +13,7 @@ interface Icons {
 
 export default function SocialIcons({ Icons }: Props) {
   return (
-    <div className="text-teal-500">
+    <div className="text-teal-500 flex justify-center pb-8">
       {Icons.map((icon) => (
         <span
           key={icon.name}
