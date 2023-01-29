@@ -35,7 +35,7 @@ export default function Banner() {
   }, [router]);
 
   return (
-    <div className="flex flex-col lg:flex-row lg:space-x-5 justify-between font-bold px-10 py-5 mb-5">
+    <div className="flex flex-col lg:flex-row lg:space-x-5 justify-between font-bold pl-10 py-5">
       <div>
         <h1 className="text-7xl">Our Daily Blog</h1>
 

@@ -5,10 +5,10 @@ export const BRANDS = [
   { name: "Finance", link: "#" },
 ];
 export const TOPICS = [
-  { name: "Personal Development", link: "#" },
-  { name: "Software Tech", link: "#" },
+  { name: "Software Development", link: "#" },
+  { name: "Personal Growth", link: "#" },
   { name: "Careers", link: "#" },
-  { name: "Setup", link: "#" },
+  { name: "Books", link: "#" },
 ];
 export const COMPANY = [
   { name: "Contact Us", link: "#" },

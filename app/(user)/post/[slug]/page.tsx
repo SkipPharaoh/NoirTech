@@ -39,7 +39,7 @@ export default async function Post({ params: { slug } }: Props) {
   const post: Post = await client.fetch(query, { slug });
 
   return (
-    <article className="px-10 pb-28">
+    <article className="px-10 pb-28 mb-10 mt-10">
       <section className="space-y-2 border border-[#F7AB0A] text-white">
         <div className="relative min-h-56 flex flex-col md:flex-row justify-between">
           <div className="absolute top-0 w-full h-full opacity-10 blur-sm p-10">
@@ -82,10 +82,10 @@ export default async function Post({ params: { slug } }: Props) {
               <div className="flex items-center justify-end mt-auto space-x-2">
                 {post.categories.map((category) => (
                   <div
-                    key={category._id}
+                    key={category && category._id}
                     className="bg-gray-800 text-white px-3 py-1 rounded-full text-sm font-semibold mt-4"
                   >
-                    <p>{category.title}</p>
+                    <p>{category && category.title}</p>
                   </div>
                 ))}
               </div>

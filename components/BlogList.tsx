@@ -14,10 +14,10 @@ export default function BlogList({ posts }: Props) {
       post.categories &&
       post.categories.map((category) => (
         <div
-          key={category._id}
+          key={category && category._id}
           className="bg-[#F7AB0A] text-center text-black px-3 py-1 rounded-full text-sm font-semibold"
         >
-          <p>{category.title}</p>
+          <p>{category && category.title}</p>
         </div>
       ));
 
@@ -26,7 +26,7 @@ export default function BlogList({ posts }: Props) {
         <div className="group cursor-pointer flex flex-col">
           <div className="relative w-full h-80 drop-shadow-xl group-hover:scale-105 transition-transform duration-200 ease-out">
             <Image
-              className="object-cover object-left lg:object-center"
+              className="object-fill object-left lg:object-center"
               src={urlFor(post.mainImage)?.url() ?? ""}
               alt={post.author.name}
               fill
@@ -64,11 +64,9 @@ export default function BlogList({ posts }: Props) {
 
   return (
     <div>
-      <Divider />
-      <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 mb-10 mt-10">
         {Posts}
       </div>
-      <Divider />
     </div>
   );
 }
