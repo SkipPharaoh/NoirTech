@@ -1,19 +1,60 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import Breadcrumb from "./Breadcrumb";
+import BreadcrumbItem from "./BreadcrumbItem";
+
+interface Breadcrumbs {
+  href: string;
+  label: string;
+  isCurrent: boolean;
+}
+
 export default function Banner() {
+  const router = usePathname();
+  const [breadcrumbs, setBreadcrumbs] = useState<Breadcrumbs[]>();
+
+  useEffect(() => {
+    let pathArray = router?.split("/");
+    pathArray?.shift();
+
+    pathArray = pathArray?.filter((path) => path !== "" && path !== "post");
+
+    const breadcrumbs = pathArray?.map((path, index) => {
+      const href = "/" + pathArray?.slice(0, index + 1).join("/");
+
+      return {
+        href: "/post" + href,
+        label: path.charAt(0).toUpperCase() + path.slice(1),
+        isCurrent: index === pathArray?.length! - 1,
+      };
+    });
+
+    setBreadcrumbs(breadcrumbs);
+  }, [router]);
+
   return (
-    <div className="flex flex-col lg:flex-row lg:space-x-5 justify-between font-bold px-10 py-5 mb-10">
+    <div className="flex flex-col lg:flex-row lg:space-x-5 justify-between font-bold px-10 py-5 mb-5">
       <div>
         <h1 className="text-7xl">Our Daily Blog</h1>
-        <h2 className="mt-5 md:mt-0">
-          Welcome to{" "}
-          <span className="underline decoration-4 decoration-[#F7AB0A]">
-            Every Developers
-          </span>{" "}
-          favorite blog in the urban space.
-        </h2>
+
+        <Breadcrumb>
+          <BreadcrumbItem isCurrent={router === "/"} href="/">
+            Home
+          </BreadcrumbItem>
+          {breadcrumbs &&
+            breadcrumbs.map((breadcrumb) => (
+              <BreadcrumbItem
+                key={breadcrumb.href}
+                href={breadcrumb.href}
+                isCurrent={breadcrumb.isCurrent}
+              >
+                {breadcrumb.label}
+              </BreadcrumbItem>
+            ))}
+        </Breadcrumb>
       </div>
-      <p className="mt-5 md:mt-2 text-gray-400 max-w-sm">
-        New blog post | Our story | The weekly debugging nightmares & more!
-      </p>
     </div>
   );
 }

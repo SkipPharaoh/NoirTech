@@ -1,6 +1,5 @@
-import React from "react";
+import { BRANDS, COMPANY, LEGAL, TOPICS } from "../lib/FooterMenus";
 import FooterItems from "./FooterItems";
-import { BRANDS, TOPICS, COMPANY, LEGAL } from "../lib/FooterMenus";
 
 export default function FooterItemsContainer() {
   return (

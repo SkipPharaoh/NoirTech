@@ -1,9 +1,8 @@
-import React from "react";
+import { Icons } from "../lib/FooterMenus";
+import AboutSection from "./AboutSection";
+import BlogSubscription from "./BlogSubscription";
 import FooterItemsContainer from "./FooterItemsContainer";
 import SocialIcons from "./SocialIcons";
-import { Icons } from "../lib/FooterMenus";
-import BlogSubscription from "./BlogSubscription";
-import AboutSection from "./AboutSection";
 
 export default function Footer() {
   const date = new Date().getFullYear();

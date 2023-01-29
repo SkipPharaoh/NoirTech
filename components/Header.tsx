@@ -17,6 +17,7 @@ export default function Header() {
         </Link>
         <h1 className="">BLK Hood Tech</h1>
       </div>
+      {/* TODO: convert below too a menu  */}
       <div>
         <Link
           href="/login"
