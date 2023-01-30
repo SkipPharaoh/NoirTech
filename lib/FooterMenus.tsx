@@ -1,8 +1,8 @@
 export const BRANDS = [
-  { name: "Development", link: "#" },
+  { name: "Learn Development", link: "#" },
+  { name: "Web Development", link: "#" },
   { name: "Job Boards", link: "#" },
   { name: "Products", link: "#" },
-  { name: "Finance", link: "#" },
 ];
 export const TOPICS = [
   { name: "Software Development", link: "#" },

@@ -37,7 +37,7 @@ export default function Banner() {
   return (
     <div className="flex flex-col lg:flex-row lg:space-x-5 justify-between font-bold pl-10 py-5">
       <div>
-        <h1 className="text-7xl">Our Daily Blog</h1>
+        <h1 className="text-3xl">Our Daily Blog</h1>
 
         <Breadcrumb>
           <BreadcrumbItem isCurrent={router === "/"} href="/">
