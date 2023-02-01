@@ -46,6 +46,16 @@ export default defineType({
       of: [{ type: "reference", to: { type: "category" } }],
     }),
     defineField({
+      name: "Trending",
+      title: "Trending",
+      type: "boolean",
+    }),
+    defineField({
+      name: "Popular",
+      title: "Popular",
+      type: "boolean",
+    }),
+    defineField({
       name: "publishedAt",
       title: "Published at",
       type: "datetime",

@@ -24,7 +24,9 @@ export default function Header() {
             alt="Logo"
             className="rounded-full"
           />
-          <h1 className="text-4xl">BLK Hood Tech</h1>
+          <h1 className="lg:text-4xl md:text-3xl xl:text-5xl text-2xl ease-in duration-300">
+            BLK Hood Tech
+          </h1>
         </Link>
       </div>
       {/* TODO: convert below too a menu  */}
