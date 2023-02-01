@@ -2,8 +2,8 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import Breadcrumb from "./Breadcrumb";
-import BreadcrumbItem from "./BreadcrumbItem";
+import Breadcrumb from "./ChildComponents/Breadcrumb";
+import BreadcrumbItem from "./ChildComponents/BreadcrumbItem";
 
 interface Breadcrumbs {
   href: string;

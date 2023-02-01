@@ -10,7 +10,7 @@ const BreadcrumbItem = ({ children, href, isCurrent, ...props }: Props) => {
   return (
     <li {...props}>
       <Link
-        className={isCurrent && "text-gray-500"}
+        className={isCurrent ? "text-gray-500" : undefined}
         aria-current={isCurrent ? "page" : "false"}
         href={href}
         passHref

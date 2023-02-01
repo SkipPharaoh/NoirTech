@@ -1,8 +1,7 @@
 import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import urlFor from "../lib/urlFor";
-import ClientSideRoute from "./ClientSideRoute";
-import Divider from "./Divider";
+import ClientSideRoute from "./ChildComponents/ClientSideRoute";
 
 type Props = {
   posts: Post[];
@@ -14,7 +13,7 @@ export default function BlogList({ posts }: Props) {
       post.categories &&
       post.categories.map((category) => (
         <div
-          key={category && category._id}
+          key={category ? category._id : undefined}
           className="bg-[#F7AB0A] text-center text-black px-3 py-1 rounded-full text-sm font-semibold"
         >
           <p>{category && category.title}</p>
