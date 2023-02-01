@@ -6,6 +6,7 @@ import PreviewSuspense from "../../components/PreviewSuspense";
 import { client } from "../../lib/sanity.client";
 import TrendingSection from "../../components/TrendingSection";
 import LatestSection from "../../components/LatestSection";
+import PopularSection from "../../components/PopularSection";
 
 const query = groq`*[_type == "post"]{
   ...,
@@ -42,6 +43,7 @@ export default async function HomePage() {
     <>
       <TrendingSection />
       <LatestSection />
+      <PopularSection />
       <BlogList posts={posts} />
     </>
   );
