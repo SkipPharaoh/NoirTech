@@ -29,7 +29,7 @@ function Slide() {
         </Link>
       </div>
       <div className="info flex justify-center flex-col px-6">
-        <div className="category">
+        <div className="category flex flex-col">
           <Link href={"/"} className="text-orange-600 hover:text-orange-800">
             Business, Travel
           </Link>

@@ -43,8 +43,8 @@ export default async function HomePage() {
   return (
     <>
       <TrendingSection />
-      <LatestSection />
       <PopularSection />
+      <LatestSection />
       <CategoriesSection />
       <BlogList posts={posts} />
     </>

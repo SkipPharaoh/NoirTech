@@ -1,11 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Author() {
+interface AuthorProps {
+  image?: string;
+  name?: string;
+  profession?: string;
+}
+
+export default function Author({ image, name, profession }: AuthorProps) {
+  const imageUrl = image ?? "/Images/author/author1.jpg";
+  const isName = name ?? "Author Name";
+  const isProfession = profession ?? "Job Title";
+
   return (
     <div className="author flex py-5">
       <Image
-        src={"/Images/author/author1.jpg"}
+        src={imageUrl}
         alt=""
         width={60}
         height={60}
@@ -16,9 +26,9 @@ export default function Author() {
           href={"/"}
           className="text-md font-bold text-gray-800 hover:text-gray-600"
         >
-          Author Name
+          {isName}
         </Link>
-        <span className="text-sm text-gray-500">Job Title</span>
+        <span className="text-sm text-gray-500">{isProfession}</span>
       </div>
     </div>
   );

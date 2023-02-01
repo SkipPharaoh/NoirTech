@@ -21,6 +21,7 @@ interface Author extends Base {
   image: Image;
   name: string;
   slug: Slug;
+  profession: string;
 }
 
 interface Image {
