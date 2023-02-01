@@ -4,6 +4,7 @@ import Image from "next/image";
 import urlFor from "../../../../lib/urlFor";
 import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "../../../../components/RichTextComponents";
+import RelatedBlog from "../../../../components/ChildComponents/RelatedBlog";
 
 interface Props {
   params: {
@@ -95,6 +96,9 @@ export default async function Post({ params: { slug } }: Props) {
       </section>
 
       <PortableText value={post.body} components={RichTextComponents} />
+      <div className="flex justify-center">
+        <RelatedBlog />
+      </div>
     </article>
   );
 }
