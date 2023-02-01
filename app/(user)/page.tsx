@@ -4,6 +4,7 @@ import BlogList from "../../components/BlogList";
 import PreviewBlogList from "../../components/PreviewBlogList";
 import PreviewSuspense from "../../components/PreviewSuspense";
 import { client } from "../../lib/sanity.client";
+import TrendingSection from "../../components/TrendingSection";
 
 const query = groq`*[_type == "post"]{
   ...,
@@ -36,5 +37,10 @@ export default async function HomePage() {
 
   const posts = await client.fetch(query);
 
-  return <BlogList posts={posts} />;
+  return (
+    <>
+      <TrendingSection />
+      <BlogList posts={posts} />
+    </>
+  );
 }
