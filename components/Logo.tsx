@@ -1,5 +1,5 @@
 import Image from "next/image";
-import favicon from "../../public/favicon.ico";
+import favicon from "../public/favicon.ico";
 
 export default function Logo(props: any) {
   const { renderDefault } = props;

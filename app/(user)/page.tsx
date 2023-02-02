@@ -14,6 +14,18 @@ const query = groq`*[_type == "post"]{
   categories[]->
 } | order(_createdAt desc)`;
 
+const trendingQuery = groq`*[Trending == true]{
+  ...,
+  author->,
+  categories[]->
+} | order(_createdAt desc)`;
+
+const popularQuery = groq`*[Popular == true]{
+  ...,
+  author->,
+  categories[]->
+} | order(_createdAt desc)`;
+
 export const revalidate = 60;
 
 type AppPreviewData = { token: string } | undefined;
@@ -32,6 +44,8 @@ export default async function HomePage() {
       >
         <PreviewBlogList
           query={query}
+          trendingQuery={trendingQuery}
+          popularQuery={popularQuery}
           token={(previewData() as AppPreviewData)!.token}
         />
       </PreviewSuspense>
@@ -39,11 +53,13 @@ export default async function HomePage() {
   }
 
   const posts = await client.fetch(query);
+  const trendingPosts = await client.fetch(trendingQuery);
+  const popularPosts = await client.fetch(popularQuery);
 
   return (
     <>
-      <TrendingSection />
-      <PopularSection />
+      <TrendingSection trendingPosts={trendingPosts} />
+      <PopularSection popularPosts={popularPosts} />
       <LatestBlogList posts={posts} />
       <CategoriesSection />
     </>

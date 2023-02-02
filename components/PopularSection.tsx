@@ -4,7 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import Author from "./Author";
 
-export default function PopularSection() {
+interface PopularSectionProps {
+  popularPosts: Post[];
+}
+
+export default function PopularSection({ popularPosts }: PopularSectionProps) {
   return (
     <section className="container mx-auto md:px-20 py-16">
       <h1 className="font-bold text-4xl py-12 text-center">Most Popular</h1>
