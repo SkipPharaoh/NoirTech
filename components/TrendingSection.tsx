@@ -6,7 +6,7 @@ import Author from "./ChildComponents/Author";
 
 export default function TrendingSection() {
   const bg = {
-    background: "url('/images/banner.png') no-repeat",
+    // background: "url('/images/banner.png') no-repeat",
     backgroundPosition: "right",
   };
 
@@ -22,7 +22,7 @@ export default function TrendingSection() {
 
 function Slide() {
   return (
-    <div className="grid md:grid-cols-2">
+    <div className="grid xl:grid-cols-2">
       <div className="image">
         <Link href={"/"}>
           <Image src={"/Images/img1.jpg"} alt="" width={600} height={600} />

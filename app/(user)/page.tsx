@@ -1,11 +1,10 @@
 import { groq } from "next-sanity";
 import { previewData } from "next/headers";
-import BlogList from "../../components/BlogList";
+import LatestBlogList from "../../components/LatestBlogList";
 import PreviewBlogList from "../../components/PreviewBlogList";
 import PreviewSuspense from "../../components/PreviewSuspense";
 import { client } from "../../lib/sanity.client";
 import TrendingSection from "../../components/TrendingSection";
-import LatestSection from "../../components/LatestSection";
 import PopularSection from "../../components/PopularSection";
 import CategoriesSection from "../../components/CategoriesSection";
 
@@ -18,6 +17,7 @@ const query = groq`*[_type == "post"]{
 export const revalidate = 60;
 
 type AppPreviewData = { token: string } | undefined;
+
 export default async function HomePage() {
   if ((previewData() as AppPreviewData)?.token) {
     return (
@@ -44,9 +44,8 @@ export default async function HomePage() {
     <>
       <TrendingSection />
       <PopularSection />
-      <LatestSection />
+      <LatestBlogList posts={posts} />
       <CategoriesSection />
-      <BlogList posts={posts} />
     </>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { usePreview } from "../lib/sanity.preview";
-import BlogList from "./BlogList";
+import LatestBlogList from "./LatestBlogList";
 
 type Props = {
   query: string;
@@ -11,5 +11,5 @@ type Props = {
 export default function PreviewBlogList({ query, token }: Props) {
   const posts = usePreview(null, query);
 
-  return <BlogList posts={posts} />;
+  return <LatestBlogList posts={posts} />;
 }
