@@ -1,4 +1,4 @@
-import Author from "./ChildComponents/Author";
+import Author from "./Author";
 import Link from "next/link";
 import Image from "next/image";
 

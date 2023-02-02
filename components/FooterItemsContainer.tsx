@@ -1,4 +1,4 @@
-import { BRANDS, COMPANY, LEGAL, TOPICS } from "../../lib/FooterMenus";
+import { BRANDS, COMPANY, LEGAL, TOPICS } from "../lib/FooterMenus";
 import FooterItems from "./FooterItems";
 
 export default function FooterItemsContainer() {

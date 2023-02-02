@@ -4,8 +4,8 @@ import Image from "next/image";
 import urlFor from "../../../../lib/urlFor";
 import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "../../../../components/RichTextComponents";
-import RelatedBlog from "../../../../components/ChildComponents/RelatedBlog";
-import Author from "../../../../components/ChildComponents/Author";
+import RelatedBlog from "../../../../components/RelatedBlog";
+import Author from "../../../../components/Author";
 
 interface Props {
   params: {

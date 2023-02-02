@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import Author from "./ChildComponents/Author";
+import Author from "./Author";
 
 export default function PopularSection() {
   return (

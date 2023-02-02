@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Author from "./ChildComponents/Author";
+import Author from "./Author";
 
 export default function TrendingSection() {
   const bg = {
