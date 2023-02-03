@@ -9,11 +9,9 @@ export default function CategoriesSection() {
         <div className="item">
           <h1 className="font-bold text-4xl py-12">Business</h1>
           <div className="flex flex-col gap-6">
-            {/* posts */}
             {Post()}
             {Post()}
             {Post()}
-            {/* {Post()} */}
           </div>
         </div>
         <div className="item">
@@ -22,7 +20,6 @@ export default function CategoriesSection() {
             {Post()}
             {Post()}
             {Post()}
-            {/* {Post()} */}
           </div>
         </div>
       </div>

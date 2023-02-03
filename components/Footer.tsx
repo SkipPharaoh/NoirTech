@@ -17,7 +17,7 @@ export default function Footer() {
       <FooterItemsContainer />
       <div className="flex justify-center py-2 text-black text-sm">
         {/* TODO: Add company name to copyright below */}
-        <span>&copy; {date} All rights reserved</span>
+        <span>&copy; {date} BLK Tech ODB. All rights reserved</span>
       </div>
       <SocialIcons Icons={Icons} />
     </footer>

@@ -25,7 +25,7 @@ export default function Header() {
             className="rounded-full"
           />
           <h1 className="lg:text-4xl md:text-3xl xl:text-5xl text-2xl ease-in duration-300">
-            BLK Hood Tech
+            BLK Tech On Da Block
           </h1>
         </Link>
       </div>

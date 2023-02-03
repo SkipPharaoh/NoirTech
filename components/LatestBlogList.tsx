@@ -28,24 +28,26 @@ export default function LatestBlogList({ posts }: LatestBlogListProps) {
       >
         <div className="group">
           <div className="bg-gray-400 bg-opacity-10 backdrop-blur-lg rounded drop-shadow-xl shadow-md group-hover:scale-105 transition-transform duration-200 ease-out">
-            {/* <div className="image rounded"> */}
-            <Image
-              className=""
-              src={urlFor(blogPost.mainImage)?.url() ?? ""}
-              alt={blogPost.author.name}
-              width={500}
-              height={350}
-            />
-            {/* </div> */}
+            <div className="image">
+              <Image
+                className="rounded"
+                src={urlFor(blogPost.mainImage)?.url() ?? ""}
+                alt={blogPost.author.name}
+                width={500}
+                height={350}
+              />
+            </div>
 
             <div className="info flex justify-center flex-col py-4">
               <div className="cat flex">
-                {blogCategories} -{" "}
-                {new Date(blogPost._createdAt).toLocaleDateString("en-US", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })}
+                {blogCategories}{" "}
+                <p className="text-gray-800 hover:text-gray-600">
+                  {new Date(blogPost._createdAt).toLocaleDateString("en-US", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </p>
               </div>
               <div className="title text-xl font-bold text-gray-800 hover:text-gray-600">
                 {blogPost.title}
@@ -65,7 +67,7 @@ export default function LatestBlogList({ posts }: LatestBlogListProps) {
     <section className="container mx-auto md:px-10 py-10">
       <h1 className="font-bold text-4xl py-2 text-center">Latest Posts</h1>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14 my-10 sm:px-10 px-4 h-full w-full">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14 my-10">
         {BlogPosts}
       </div>
     </section>
