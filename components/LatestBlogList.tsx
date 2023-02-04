@@ -27,20 +27,18 @@ export default function LatestBlogList({ posts }: LatestBlogListProps) {
         route={`/post/${blogPost.slug.current}`}
       >
         <div className="group">
-          <div className="bg-gray-400 bg-opacity-10 backdrop-blur-lg rounded drop-shadow-xl shadow-md group-hover:scale-105 transition-transform duration-200 ease-out">
-            <div className="image">
+          <div className="hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md">
+            <div className="images">
               <Image
-                className="rounded"
                 src={urlFor(blogPost.mainImage)?.url() ?? ""}
-                alt={blogPost.author.name}
-                width={500}
-                height={350}
+                alt=""
+                width={600}
+                height={400}
               />
             </div>
-
             <div className="info flex justify-center flex-col py-4">
-              <div className="cat flex">
-                {blogCategories}{" "}
+              <div className="cat">
+                {blogCategories}
                 <p className="text-gray-800 hover:text-gray-600">
                   {new Date(blogPost._createdAt).toLocaleDateString("en-US", {
                     day: "numeric",
@@ -55,7 +53,7 @@ export default function LatestBlogList({ posts }: LatestBlogListProps) {
               <p className="text-gray-500 py-3 line-clamp-2">
                 {blogPost.description}
               </p>
-              {/* <Author /> */}
+              {/* <Author></Author> */}
             </div>
           </div>
         </div>
@@ -64,10 +62,10 @@ export default function LatestBlogList({ posts }: LatestBlogListProps) {
   });
 
   return (
-    <section className="container mx-auto md:px-10 py-10">
-      <h1 className="font-bold text-4xl py-2 text-center">Latest Posts</h1>
+    <section className="container mx-auto md:px-20 py-10">
+      <h1 className="font-bold text-4xl py-12 text-center">Latest Posts</h1>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14 my-10">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14">
         {BlogPosts}
       </div>
     </section>

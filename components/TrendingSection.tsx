@@ -33,7 +33,7 @@ export default function TrendingSection({
         key={blogPost._id}
         route={`/post/${blogPost.slug.current}`}
       >
-        <div className="grid xl:grid-cols-2">
+        <div className="grid xl:grid-cols-2 hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md">
           <div className="image">
             <Image
               src={urlFor(blogPost.mainImage)?.url() ?? ""}

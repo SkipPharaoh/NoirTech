@@ -26,6 +26,10 @@ const popularQuery = groq`*[Popular == true]{
   categories[]->
 } | order(_createdAt desc)`;
 
+const categoryQuery = groq`*[_type == "category"]{
+  ...,
+} | order(title)`;
+
 export const revalidate = 60;
 
 type AppPreviewData = { token: string } | undefined;
@@ -46,6 +50,7 @@ export default async function HomePage() {
           query={query}
           trendingQuery={trendingQuery}
           popularQuery={popularQuery}
+          categoryQuery={categoryQuery}
           token={(previewData() as AppPreviewData)!.token}
         />
       </PreviewSuspense>
@@ -55,13 +60,14 @@ export default async function HomePage() {
   const posts = await client.fetch(query);
   const trendingPosts = await client.fetch(trendingQuery);
   const popularPosts = await client.fetch(popularQuery);
+  const categoryInfo = await client.fetch(categoryQuery);
 
   return (
     <>
       <TrendingSection trendingPosts={trendingPosts} />
+      <CategoriesSection categoryInfo={categoryInfo} />
       <PopularSection popularPosts={popularPosts} />
       <LatestBlogList posts={posts} />
-      <CategoriesSection />
     </>
   );
 }

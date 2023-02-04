@@ -29,7 +29,7 @@ export default function PopularSection({ popularPosts }: PopularSectionProps) {
         route={`/post/${blogPost.slug.current}`}
       >
         <div className="group">
-          <div className="bg-gray-400 bg-opacity-10 backdrop-blur-lg rounded drop-shadow-xl shadow-md group-hover:scale-105 transition-transform duration-200 ease-out">
+          <div className="hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md">
             <div className="images">
               <Image
                 src={urlFor(blogPost.mainImage)?.url() ?? ""}
@@ -55,7 +55,7 @@ export default function PopularSection({ popularPosts }: PopularSectionProps) {
               <p className="text-gray-500 py-3 line-clamp-2">
                 {blogPost.description}
               </p>
-              <Author></Author>
+              {/* <Author></Author> */}
             </div>
           </div>
         </div>
