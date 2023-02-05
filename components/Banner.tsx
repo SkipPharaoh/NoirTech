@@ -19,13 +19,13 @@ export default function Banner() {
     let pathArray = router?.split("/");
     pathArray?.shift();
 
-    pathArray = pathArray?.filter((path) => path !== "" && path !== "post");
+    pathArray = pathArray?.filter((path) => path !== "");
 
     const breadcrumbs = pathArray?.map((path, index) => {
       const href = "/" + pathArray?.slice(0, index + 1).join("/");
 
       return {
-        href: "/post" + href,
+        href: href,
         label: path.charAt(0).toUpperCase() + path.slice(1),
         isCurrent: index === pathArray?.length! - 1,
       };

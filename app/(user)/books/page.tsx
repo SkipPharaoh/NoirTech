@@ -1,17 +1,20 @@
-"use client";
-
-import Link from "next/link";
+import { groq } from "next-sanity";
+import React from "react";
+import { client } from "../../../lib/sanity.client";
+import ClientSideRoute from "../../../components/ClientSideRoute";
+import urlFor from "../../../lib/urlFor";
 import Image from "next/image";
-import Author from "./Author";
-import urlFor from "../lib/urlFor";
-import ClientSideRoute from "./ClientSideRoute";
 
-interface PopularSectionProps {
-  popularPosts: Post[];
-}
+export default async function page() {
+  const query = groq`*[_type == 'post' && categories[]->title match 'Books']{
+    ...,
+    author->,
+    categories[]->
+  }`;
 
-export default function PopularSection({ popularPosts }: PopularSectionProps) {
-  const PopularPosts = popularPosts.map((blogPost) => {
+  const booksPost: Post[] = await client.fetch(query);
+
+  const BlogPosts = booksPost.map((blogPost) => {
     const blogCategories =
       blogPost.categories &&
       blogPost.categories.map((category) => (
@@ -24,12 +27,9 @@ export default function PopularSection({ popularPosts }: PopularSectionProps) {
       ));
 
     return (
-      <ClientSideRoute
-        key={blogPost._id}
-        route={`/post/${blogPost.slug.current}`}
-      >
-        <div className="group">
-          <div className="hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md">
+      <div className="group" key={blogPost._id}>
+        <div className="hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md">
+          <ClientSideRoute route={`/post/${blogPost.slug.current}`}>
             <div className="images">
               <Image
                 src={urlFor(blogPost.mainImage)?.url() ?? ""}
@@ -40,7 +40,7 @@ export default function PopularSection({ popularPosts }: PopularSectionProps) {
             </div>
             <div className="info flex justify-center flex-col py-4">
               <div className="cat">
-                {blogCategories}
+                <div className="line-clamp-1">{blogCategories}</div>
                 <p className="text-gray-800 hover:text-gray-600">
                   {new Date(blogPost._createdAt).toLocaleDateString("en-US", {
                     day: "numeric",
@@ -57,17 +57,18 @@ export default function PopularSection({ popularPosts }: PopularSectionProps) {
               </p>
               {/* <Author></Author> */}
             </div>
-          </div>
+          </ClientSideRoute>
         </div>
-      </ClientSideRoute>
+      </div>
     );
   });
 
   return (
-    <section className="container mx-auto md:px-20 pt-16">
-      <h1 className="font-bold text-4xl py-12 text-center">Most Popular</h1>
-      <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-14">
-        {PopularPosts}
+    <section className="container mx-auto md:px-20 pb-10">
+      <h1 className="font-bold text-4xl py-12 text-center">Books</h1>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14">
+        {BlogPosts}
       </div>
     </section>
   );

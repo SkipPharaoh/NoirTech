@@ -22,12 +22,9 @@ export default function LatestBlogList({ posts }: LatestBlogListProps) {
       ));
 
     return (
-      <ClientSideRoute
-        key={blogPost._id}
-        route={`/post/${blogPost.slug.current}`}
-      >
-        <div className="group">
-          <div className="hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md">
+      <div className="group" key={blogPost._id}>
+        <div className="hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md">
+          <ClientSideRoute route={`/post/${blogPost.slug.current}`}>
             <div className="images">
               <Image
                 src={urlFor(blogPost.mainImage)?.url() ?? ""}
@@ -38,7 +35,7 @@ export default function LatestBlogList({ posts }: LatestBlogListProps) {
             </div>
             <div className="info flex justify-center flex-col py-4">
               <div className="cat">
-                {blogCategories}
+                <div className="line-clamp-1">{blogCategories}</div>
                 <p className="text-gray-800 hover:text-gray-600">
                   {new Date(blogPost._createdAt).toLocaleDateString("en-US", {
                     day: "numeric",
@@ -55,14 +52,14 @@ export default function LatestBlogList({ posts }: LatestBlogListProps) {
               </p>
               {/* <Author></Author> */}
             </div>
-          </div>
+          </ClientSideRoute>
         </div>
-      </ClientSideRoute>
+      </div>
     );
   });
 
   return (
-    <section className="container mx-auto md:px-20 py-10">
+    <section className="container mx-auto md:px-20 pb-10">
       <h1 className="font-bold text-4xl py-12 text-center">Latest Posts</h1>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14">

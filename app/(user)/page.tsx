@@ -64,8 +64,8 @@ export default async function HomePage() {
 
   return (
     <>
-      <TrendingSection trendingPosts={trendingPosts} />
       <CategoriesSection categoryInfo={categoryInfo} />
+      <TrendingSection trendingPosts={trendingPosts} />
       <PopularSection popularPosts={popularPosts} />
       <LatestBlogList posts={posts} />
     </>

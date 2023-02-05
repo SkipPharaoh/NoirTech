@@ -1,6 +1,4 @@
-import Author from "./Author";
-import Link from "next/link";
-import Image from "next/image";
+import ClientSideRoute from "./ClientSideRoute";
 
 interface CategoriesSectionProps {
   categoryInfo: Category[];
@@ -11,16 +9,20 @@ export default function CategoriesSection({
 }: CategoriesSectionProps) {
   const CategoryInfo = categoryInfo.map((category) => {
     return (
-      <div className="p-20 m-2 text-center bg-gray-300 border-black border-solid border-2">
-        <h1 className="">{category.title}</h1>
+      <div key={category._id}>
+        <ClientSideRoute route={`/${category.slug.current}`}>
+          <div className="p-20 m-2 text-center bg-gray-300 border-black border-solid border-2">
+            <h1 className="">{category.title}</h1>
 
-        {/* <p>{category.description}</p> */}
+            {/* <p>{category.description}</p> */}
+          </div>
+        </ClientSideRoute>
       </div>
     );
   });
 
   return (
-    <section className="container mx-auto py-16">
+    <section className="container mx-auto pt-16">
       <div>
         <h1 className="font-bold text-4xl pb-12 text-center">
           Browse By Category
