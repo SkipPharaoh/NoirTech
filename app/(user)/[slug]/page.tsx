@@ -1,20 +1,72 @@
 import { groq } from "next-sanity";
-import React from "react";
 import { client } from "../../../lib/sanity.client";
-import ClientSideRoute from "../../../components/ClientSideRoute";
-import urlFor from "../../../lib/urlFor";
 import Image from "next/image";
+import urlFor from "../../../lib/urlFor";
+import ClientSideRoute from "../../../components/ClientSideRoute";
 
-export default async function page() {
-  const query = groq`*[_type == 'post' && categories[]->title match 'Personal Story']{
-    ...,
-    author->,
-    categories[]->
-  }`;
+interface Props {
+  params: {
+    slug: string;
+  };
+  searchParams?: {
+    search?: string;
+  };
+}
 
-  const storyPost: Post[] = await client.fetch(query);
+export const revalidate = 60;
 
-  const BlogPosts = storyPost.map((blogPost) => {
+export async function generateStaticParams() {
+  const query = groq`*[_type == "post"]
+    {
+        slug,
+    }`;
+
+  const slugs: Post[] = await client.fetch(query);
+  const slugRoutes = slugs.map((slug) => slug.slug.current);
+
+  return slugRoutes.map((slug) => ({
+    slug,
+  }));
+}
+
+export default async function Post({ params: { slug }, searchParams }: Props) {
+  console.log(searchParams);
+
+  /*
+  ***
+  Below is just a temporary fix for the searchParams prop in the next js13 bug.
+  Issue link is below for reference.
+  https://github.com/vercel/next.js/issues/43077
+
+  The temporary fix is the toTitleCase function, the word being replaced & the searchWord variable.
+  ***
+  */
+
+  const toTitleCase = (phrase: string) => {
+    return phrase
+      .toLowerCase()
+      .split(" ")
+      .map((char: string) => char.charAt(0).toUpperCase() + char.slice(1))
+      .join(" ");
+  };
+
+  const word = slug
+    .replace(/[&\/\\#,+()$~%.'":*?<>{}-]/g, " ")
+    .replace("and", "&");
+
+  const searchWord = toTitleCase(word);
+
+  const query = groq`*[_type == "post" && categories[]->title match "${searchWord}"]
+    {
+        ...,
+        author->,
+        categories[]->,
+    }
+    `;
+
+  const booksPost: Post[] = await client.fetch(query, { slug });
+
+  const BlogPosts = booksPost.map((blogPost) => {
     const blogCategories =
       blogPost.categories &&
       blogPost.categories.map((category) => (
@@ -65,7 +117,7 @@ export default async function page() {
 
   return (
     <section className="container mx-auto md:px-20 pb-10">
-      <h1 className="font-bold text-4xl py-12 text-center">Personal Story</h1>
+      <h1 className="font-bold text-4xl py-12 text-center">{searchWord}</h1>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14">
         {BlogPosts}

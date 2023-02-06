@@ -2,12 +2,16 @@
 
 import Link from "next/link";
 
+type Route = { pathname: string; query?: { search: string } };
+
+interface ClientSideRouteProps {
+  children: React.ReactNode;
+  route: string | Route;
+}
+
 export default function ClientSideRoute({
   children,
   route,
-}: {
-  children: React.ReactNode;
-  route: string;
-}) {
-  return <Link href={route}>{children}</Link>;
+}: ClientSideRouteProps) {
+  return <Link href={route.pathname ?? route}>{children}</Link>;
 }
