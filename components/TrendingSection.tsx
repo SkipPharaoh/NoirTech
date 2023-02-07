@@ -44,7 +44,7 @@ export default function TrendingSection({
           </div>
           <div className="info flex justify-center flex-col px-6">
             <div className="category flex flex-col">
-              <div className="text-orange-600 hover:text-orange-800">
+              <div className="text-orange-600 hover:text-orange-800 line-clamp-1 xl:line-clamp-none">
                 {blogCategories}
               </div>
               <div className="text-gray-800 hover:text-gray-600">

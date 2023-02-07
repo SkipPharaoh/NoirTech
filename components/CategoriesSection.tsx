@@ -8,6 +8,15 @@ export default function CategoriesSection({
   categoryInfo,
 }: CategoriesSectionProps) {
   const CategoryInfo = categoryInfo.map((category) => {
+    const bg = {
+      background: `url('/images/categories/${category.slug.current}.png') no-repeat`,
+      maxWidth: "100%",
+      height: "auto",
+      width: "auto",
+      objectfit: "contain",
+      backgroundPosition: "center",
+    };
+
     return (
       <div key={category._id}>
         <ClientSideRoute
@@ -16,8 +25,20 @@ export default function CategoriesSection({
             query: { search: category.title },
           }}
         >
-          <div className="p-20 m-2 text-center bg-gray-300 border-black border-solid border-2">
-            <h1 className="">{category.title}</h1>
+          <div
+            className="p-20 m-2 text-center border-black border-solid border-2"
+            style={bg}
+          >
+            <h1
+              className="text-gray-400"
+              style={{
+                color: "white",
+                textShadow:
+                  "1px 1px 12px black, 0 0 25px red, 0 0 15px darkblue",
+              }}
+            >
+              {category.title}
+            </h1>
 
             {/* <p>{category.description}</p> */}
           </div>
@@ -29,7 +50,7 @@ export default function CategoriesSection({
   return (
     <section className="container mx-auto pt-16">
       <div>
-        <h1 className="font-bold text-4xl pb-12 text-center">
+        <h1 className="font-bold text-4xl pb-12 text-center text-shadow">
           Browse By Category
         </h1>
 

@@ -4,6 +4,7 @@ import Image from "next/image";
 import urlFor from "../../../lib/urlFor";
 import ClientSideRoute from "../../../components/ClientSideRoute";
 
+export const dynamic = "force-dynamic";
 interface Props {
   params: {
     slug: string;
@@ -30,7 +31,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Post({ params: { slug }, searchParams }: Props) {
-  console.log(searchParams);
+  // console.log(searchParams);
 
   /*
   ***
