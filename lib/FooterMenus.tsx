@@ -1,26 +1,11 @@
-export const BRANDS = [
-  { name: "Learn Development", link: "#" },
-  { name: "Web Development", link: "#" },
-  { name: "Job Boards", link: "#" },
-  { name: "Products", link: "#" },
-];
-export const TOPICS = [
-  { name: "Software Development", link: "#" },
-  { name: "Personal Growth", link: "#" },
-  { name: "Careers", link: "#" },
-  { name: "Books", link: "#" },
-];
-export const COMPANY = [
-  { name: "Contact Us", link: "#" },
-  { name: "Our Story", link: "#" },
-  { name: "Press", link: "#" },
-  { name: "FAQ", link: "#" },
-];
-export const LEGAL = [
-  { name: "Terms & Condition", link: "#" },
-  { name: "Cookies Policy", link: "#" },
-  { name: "Privacy Policy", link: "#" },
-  { name: "Support", link: "#" },
+export const footerMenu = [
+  { name: "Terms of Use", link: "" },
+  { name: "Privacy Policy", link: "" },
+  { name: "Cookie Policy", link: "" },
+  { name: "Advertising Policy", link: "" },
+  { name: "Recommendation", link: "" },
+  { name: "Contact Support", link: "" },
+  { name: "Accessibility", link: "" },
 ];
 
 export const Icons = [

@@ -64,10 +64,10 @@ export default async function HomePage() {
 
   return (
     <>
-      <CategoriesSection categoryInfo={categoryInfo} />
       <TrendingSection trendingPosts={trendingPosts} />
       <PopularSection popularPosts={popularPosts} />
       <LatestBlogList posts={posts} />
+      <CategoriesSection categoryInfo={categoryInfo} />
     </>
   );
 }
