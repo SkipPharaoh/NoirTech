@@ -12,13 +12,11 @@ interface Icons {
 
 export default function SocialIcons({ Icons }: Props) {
   return (
-    <div className="text-teal-500 flex justify-center pb-8">
+    <div className="mb-6 grid grid-cols-3 md:grid-cols-none md:flex lg:justify-end justify-items-center w-3/4">
       {Icons.map((icon) => (
         <span
           key={icon.name}
-          className="p-1 cursor-pointer inline-flex items-center
-        rounded-full bg-gray-400 mx-1.5 text-xl hover:text-gray-100 hover:bg-teal-500
-        duration-300 "
+          className="rounded-full inline-flex justify-center items-center hover:shadow-md text-gray-800 bg-gray-100 hover:bg-gray-200 mr-1  h-12 w-12 share-facebook cursor-pointer"
         >
           <Image
             src={icon.icon && icon.icon}
