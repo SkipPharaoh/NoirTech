@@ -11,11 +11,13 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className="max-w-7xl mx-auto">
+      <body className="">
         <Header />
         <Banner />
         <Divider />
-        {children}
+        <div className="max-w-7xl mx-auto">
+          <div className="container px-4 md:px-6 pb-24">{children}</div>
+        </div>
         <Divider />
         <Footer />
       </body>

@@ -11,10 +11,13 @@ export default function Header() {
 
   const handleOnClickNav = () => {
     setOpenNav(!openNav);
+    openNav === true
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "unset");
   };
 
   return (
-    <header className="flex items-center justify-between font-bold px-10 py-5">
+    <header className="flex items-center justify-between font-bold py-5 px-4 md:px-6 max-w-7xl mx-auto">
       <div>
         <Link className="flex items-center space-x-2" href="/">
           <Image
@@ -24,7 +27,7 @@ export default function Header() {
             alt="Logo"
             className="rounded-full"
           />
-          <h1 className="lg:text-4xl md:text-3xl xl:text-5xl text-2xl ease-in duration-300">
+          <h1 className="lg:text-2xl md:text-xl xl:text-2xl text-2xl ease-in duration-300">
             BLK Tech On Da Block
           </h1>
         </Link>

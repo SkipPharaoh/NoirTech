@@ -10,7 +10,7 @@ export default function BlogSubscription() {
           <form action="" className="">
             <input
               type="text"
-              className="shadow border rounded w-9/12 p-3 text-gray-700 focus:outline-none focus:shadow-outline text-center"
+              className="shadow border rounded w-9/12 p-3 m-3 text-gray-700 focus:outline-none focus:shadow-outline text-center"
               placeholder="Enter Email Address*"
             />
             <button className="bg-orange-400 px-20 py-3 rounded-full text-gray-50 text-xl">
@@ -19,7 +19,7 @@ export default function BlogSubscription() {
           </form>
         </div>
 
-        <div className="mt-2 text-sm leading-5 text-gray-600 text-center">
+        <div className=" text-sm leading-5 text-gray-600 text-center">
           <p className="my-2">
             I understand that the data I am submitting will be used to provide
             me with the above-described products and/or services and

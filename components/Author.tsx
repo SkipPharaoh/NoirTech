@@ -24,13 +24,10 @@ export default function Author({ image, name, profession }: AuthorProps) {
         className="rounded-full"
       />
       <div className="flex flex-col justify-center px-4">
-        <Link
-          href={"/"}
-          className="text-md font-bold text-gray-800 hover:text-gray-600"
-        >
+        <h1 className="text-md font-bold text-gray-800 hover:text-gray-600">
           {isName}
-        </Link>
-        <span className="text-sm text-gray-500">{isProfession}</span>
+        </h1>
+        {/* <span className="text-sm text-gray-500">{isProfession}</span> */}
       </div>
     </div>
   );

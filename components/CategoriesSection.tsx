@@ -48,7 +48,7 @@ export default function CategoriesSection({
   });
 
   return (
-    <section className="container mx-auto py-16">
+    <section className="container mx-auto pt-16">
       <div>
         <h1 className="font-bold text-4xl pb-12 text-center text-shadow">
           Browse By Category

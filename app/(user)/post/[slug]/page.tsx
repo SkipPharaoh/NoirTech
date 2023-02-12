@@ -44,16 +44,16 @@ export default async function Post({ params: { slug } }: Props) {
     <article className="px-10 pb-28 mb-10 mt-10">
       <section className="container mx-auto md:px-2">
         <div className="post py-5">
-          <div className="opacity-90 blur-sm p-32">
+          {/* <div className="opacity-90 blur-sm p-32">
             <Image
               className=" object-center mx-auto"
               src={urlFor(post.mainImage).url()}
               alt={post.author.name}
               fill
             />
-          </div>
+          </div> */}
+          <h1 className="font-bold text-4xl">{post.title}</h1>
           <div className="flex justify-between pt-4">
-            <h1 className="font-bold text-4xl">{post.title}</h1>
             <h1 className="text-gray-400 pt-2">
               {new Date(post._createdAt).toLocaleDateString("en-US", {
                 day: "numeric",
