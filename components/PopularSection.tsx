@@ -26,7 +26,7 @@ export default function PopularSection({ popularPosts }: PopularSectionProps) {
     return (
       <ClientSideRoute
         key={blogPost._id}
-        route={`/post/${blogPost.slug.current}`}
+        route={`/posts/${blogPost.slug.current}`}
       >
         <div className="group">
           <div className="hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md">

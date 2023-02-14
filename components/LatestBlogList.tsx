@@ -24,7 +24,7 @@ export default function LatestBlogList({ posts }: LatestBlogListProps) {
     return (
       <div className="group" key={blogPost._id}>
         <div className="hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md">
-          <ClientSideRoute route={`/post/${blogPost.slug.current}`}>
+          <ClientSideRoute route={`/posts/${blogPost.slug.current}`}>
             <div className="images">
               <Image
                 src={urlFor(blogPost.mainImage)?.url() ?? ""}

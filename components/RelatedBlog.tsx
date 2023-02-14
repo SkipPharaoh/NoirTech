@@ -4,8 +4,8 @@ import Author from "./Author";
 
 export default function RelatedBlog() {
   return (
-    <section className="pt-20">
-      <h1 className="font-bold text-3xl py-10">Related</h1>
+    <section>
+      <h1 className="font-bold text-3xl pb-10">Related</h1>
 
       <div className="flex flex-col gap-10">
         {Post()}

@@ -7,6 +7,8 @@ import { RichTextComponents } from "../../../../components/RichTextComponents";
 import RelatedBlog from "../../../../components/RelatedBlog";
 import Author from "../../../../components/Author";
 import { ShareIcon } from "@heroicons/react/24/solid";
+import Divider from "../../../../components/Divider";
+import { notFound } from "next/navigation";
 
 interface Props {
   params: {
@@ -40,6 +42,10 @@ export default async function Post({ params: { slug } }: Props) {
     `;
 
   const post: Post = await client.fetch(query, { slug });
+
+  if (!post) {
+    notFound();
+  }
 
   return (
     <div className="w-full bg-white">
@@ -118,7 +124,10 @@ export default async function Post({ params: { slug } }: Props) {
             <PortableText value={post.body} components={RichTextComponents} />
           </div>
         </article>
-        <div className="flex justify-center max-w-3xl mx-auto mb-16">
+
+        <Divider className="max-w-3xl mx-auto mb-16" />
+
+        <div className="flex justify-center max-w-3xl mx-auto mb-10">
           <RelatedBlog />
         </div>
       </div>

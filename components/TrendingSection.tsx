@@ -31,7 +31,7 @@ export default function TrendingSection({
     return (
       <ClientSideRoute
         key={blogPost._id}
-        route={`/post/${blogPost.slug.current}`}
+        route={`/posts/${blogPost.slug.current}`}
       >
         <div className="grid xl:grid-cols-2 hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md">
           <div className="image">
