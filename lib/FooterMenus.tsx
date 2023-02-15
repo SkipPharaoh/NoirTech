@@ -1,11 +1,11 @@
 export const footerMenu = [
-  { name: "Terms of Use", link: "" },
-  { name: "Privacy Policy", link: "" },
-  { name: "Cookie Policy", link: "" },
-  { name: "Advertising Policy", link: "" },
-  { name: "Recommendation", link: "" },
-  { name: "Contact Support", link: "" },
-  { name: "Accessibility", link: "" },
+  { name: "Terms of Use", link: "/terms-of-service" },
+  { name: "Privacy Policy", link: "/privacy-policy" },
+  { name: "Cookie Policy", link: "/cookie-policy" },
+  { name: "Advertising Policy", link: "/ads-policy" },
+  { name: "Recommendation", link: "/recommendation" },
+  { name: "Contact Support", link: "/contact" },
+  // { name: "Accessibility", link: "" },
 ];
 
 export const Icons = [

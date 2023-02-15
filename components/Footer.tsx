@@ -15,7 +15,7 @@ export default function Footer() {
   const buttonGroup = footerMenu.map((button) => {
     return (
       <li className="my-1 lg:mx-1">
-        <FooterButton footerItem={button.name} />
+        <FooterButton footerItem={button.name} footerLink={button.link} />
       </li>
     );
   });

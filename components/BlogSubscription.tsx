@@ -9,7 +9,7 @@ export default function BlogSubscription() {
         <div className="py-4">
           <form action="" className="">
             <input
-              type="text"
+              type="email"
               className="shadow border rounded w-9/12 p-3 m-3 text-gray-700 focus:outline-none focus:shadow-outline text-center"
               placeholder="Enter Email Address*"
             />
