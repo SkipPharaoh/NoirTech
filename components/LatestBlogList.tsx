@@ -21,39 +21,42 @@ export default function LatestBlogList({ posts }: LatestBlogListProps) {
       ));
 
     return (
-      <div className="group" key={blogPost._id}>
+      <ClientSideRoute
+        key={blogPost._id}
+        route={`/posts/${blogPost.slug.current}`}
+      >
+        {/* <div className="group"> */}
         <div className="hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md">
-          <ClientSideRoute route={`/posts/${blogPost.slug.current}`}>
-            <div className="images">
-              <Image
-                src={urlFor(blogPost.mainImage)?.url() ?? ""}
-                alt=""
-                width={600}
-                height={400}
-              />
-            </div>
-            <div className="info flex justify-center flex-col py-4">
-              <div className="cat">
-                <div className="line-clamp-1">{blogCategories}</div>
-                <p className="text-gray-800 hover:text-gray-600">
-                  {new Date(blogPost._createdAt).toLocaleDateString("en-US", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
-                </p>
-              </div>
-              <div className="title text-xl font-bold text-gray-800 hover:text-gray-600">
-                {blogPost.title}
-              </div>
-              <p className="text-gray-500 py-3 line-clamp-2">
-                {blogPost.description}
+          <div className="images">
+            <Image
+              src={urlFor(blogPost.mainImage)?.url() ?? ""}
+              alt=""
+              width={600}
+              height={400}
+            />
+          </div>
+          <div className="info flex justify-center flex-col py-4">
+            <div className="cat">
+              <div className="line-clamp-1">{blogCategories}</div>
+              <p className="text-gray-800 hover:text-gray-600">
+                {new Date(blogPost._createdAt).toLocaleDateString("en-US", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
               </p>
-              {/* <Author></Author> */}
             </div>
-          </ClientSideRoute>
+            <div className="title text-xl font-bold text-gray-800 hover:text-gray-600">
+              {blogPost.title}
+            </div>
+            <p className="text-gray-500 py-3 line-clamp-2">
+              {blogPost.description}
+            </p>
+            {/* <Author></Author> */}
+          </div>
         </div>
-      </div>
+        {/* </div> */}
+      </ClientSideRoute>
     );
   });
 

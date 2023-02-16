@@ -21,26 +21,36 @@ export default function RelatedBlog() {
 function Post() {
   return (
     <div className="flex gap-5">
+      {/* cardContainer above */}
+      {/* imageContainer below */}
       <div className="image flex flex-col justify-start">
         <Link href={"/"}>
+          {/* imageWidth */}
+          {/* imageHeight */}
           <Image
             src={"/images/img1.jpg"}
             alt=""
-            className="rounded"
+            // className="rounded"
             width={300}
             height={200}
           />
         </Link>
       </div>
+
+      {/* cardBody */}
       <div className="info flex justify-center flex-col">
+        {/* categoryContainer */}
         <div className="cat">
           <Link href={"/"} className="text-orange-600 hover:text-orange-800">
-            Business, Travel
+            {/* category */}
+            <p>Business, Travel</p>
           </Link>
           <Link href={"/"} className="text-gray-800 hover:text-gray-600">
             - July 3, 2022
           </Link>
         </div>
+
+        {/* title */}
         <div className="title">
           <Link
             href={"/"}
@@ -49,6 +59,8 @@ function Post() {
             Your most unhappy customers are your greatest source of learning
           </Link>
         </div>
+
+        {/* author */}
         <Author />
       </div>
     </div>

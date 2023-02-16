@@ -5,7 +5,7 @@ export default function page() {
   return (
     <div>
       All Post
-      <Post type="row" size="sm" />
+      <Post type="row" size="row" />
     </div>
   );
 }
