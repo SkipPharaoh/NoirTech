@@ -1,7 +1,7 @@
-import Link from "next/link";
-import Author from "./Author";
 import Image from "next/image";
+import Link from "next/link";
 import urlFor from "../lib/urlFor";
+import Author from "./Author";
 import ClientSideRoute from "./ClientSideRoute";
 
 export const PostType = {
@@ -19,19 +19,40 @@ export const PostSize = {
 declare type PostSizeOption = "sm" | "md" | "lg" | "row";
 
 interface PostProps {
+  posts: Post;
   size: PostSizeOption;
 }
 type Prop = {
   posts: Post[];
 };
 
-export default function Post({ size }: PostProps) {
-  //   const classNames = PostType[type] + " " + PostSize[size];
+export default function Post({ posts, size }: PostProps) {
+  const {
+    author,
+    categories,
+    mainImage,
+    slug,
+    title,
+    description,
+    _id,
+    _createdAt,
+  } = posts;
+  const postRoute = `/posts/${slug.current}` ?? "/";
+  const postCategory = categories[0].title;
+  const hasImage = urlFor(mainImage)?.url() ?? "/images/img1.jpg";
+  const hasCategory = postCategory ?? "Technology";
+  const hasTitle = title ?? "Title";
+  const hasDescription = description ?? "Description";
+  const hasDate =
+    new Date(_createdAt).toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }) ?? "January 1, 2023";
 
   const sizeClass: Record<
     PostSizeOption,
     {
-      container: string;
       cardContainer: string;
       imageContainer: string;
       imageWidth: number;
@@ -44,7 +65,6 @@ export default function Post({ size }: PostProps) {
     }
   > = {
     sm: {
-      container: "grid md:grid-cols-2 lg:grid-cols-3 gap-14",
       cardContainer:
         "hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md",
       imageContainer: "image",
@@ -57,7 +77,6 @@ export default function Post({ size }: PostProps) {
       author: "author",
     },
     md: {
-      container: "grid md:grid-cols-2 lg:grid-cols-2 gap-14",
       cardContainer:
         "hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md",
       imageContainer: "image",
@@ -70,7 +89,6 @@ export default function Post({ size }: PostProps) {
       author: "author",
     },
     lg: {
-      container: "large",
       cardContainer:
         "grid xl:grid-cols-2 hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md",
       imageContainer: "image",
@@ -84,7 +102,6 @@ export default function Post({ size }: PostProps) {
       author: "author",
     },
     row: {
-      container: "relatedPost",
       cardContainer: "flex gap-5",
       imageContainer: "image flex flex-col justify-start",
       imageWidth: 300,
@@ -98,20 +115,15 @@ export default function Post({ size }: PostProps) {
   };
 
   return (
-    <div className={sizeClass[size].container}>
-      <ClientSideRoute
-        // key={blogPost._id}
-        route={`/}`}
-      >
-        {/* <div className="group"> */}
-
+    <ClientSideRoute route={postRoute}>
+      <div className="group">
         {/* Difference here between largePost & the sm/md post */}
         <div className={sizeClass[size].cardContainer}>
           <div className={sizeClass[size].imageContainer}>
             {/* difference here for the image width */}
             <Image
-              src={"/images/img1.jpg"}
-              alt=""
+              src={hasImage}
+              alt={title}
               width={sizeClass[size].imageWidth}
               height={sizeClass[size].imageHeight}
             />
@@ -122,34 +134,17 @@ export default function Post({ size }: PostProps) {
             {/* difference here between large & sm/md posts */}
             <div className={sizeClass[size].categoryContainer}>
               {/* difference here between large & sm/md posts */}
-              <div className={sizeClass[size].category}>Business</div>
-              <p className="text-gray-800 hover:text-gray-600">
-                {/* {new Date(blogPost._createdAt).toLocaleDateString("en-US", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })} */}
-                Jan. 1, 2021
-              </p>
+              <div className={sizeClass[size].category}>{hasCategory}</div>
+              <p className="text-gray-800 hover:text-gray-600">{hasDate}</p>
             </div>
 
             {/* difference here between large & sm/md posts */}
-            <div className={sizeClass[size].title}>
-              {/* {blogPost.title} */}
-              Title
-            </div>
-            <p className="text-gray-500 py-3 line-clamp-2">
-              {/* {blogPost.description} */}
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere
-              facilis voluptate qui quae autem tempora aut est minima? Molestias
-              vero quis, doloremque harum totam hic quasi tempora adipisci
-              quidem dolore.
-            </p>
+            <div className={sizeClass[size].title}>{hasTitle}</div>
+            <p className="text-gray-500 py-3 line-clamp-2">{hasDescription}</p>
             {/* <Author></Author> */}
           </div>
         </div>
-        {/* </div> */}
-      </ClientSideRoute>
-    </div>
+      </div>
+    </ClientSideRoute>
   );
 }
