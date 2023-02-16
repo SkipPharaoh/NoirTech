@@ -8,25 +8,25 @@ import TrendingSection from "../../components/TrendingSection";
 import PopularSection from "../../components/PopularSection";
 import CategoriesSection from "../../components/CategoriesSection";
 
-const query = groq`*[_type == "post"]{
+export const query = groq`*[_type == "post"]{
   ...,
   author->,
   categories[]->
 } | order(_createdAt desc)`;
 
-const trendingQuery = groq`*[Trending == true]{
+export const trendingQuery = groq`*[Trending == true]{
   ...,
   author->,
   categories[]->
 } | order(_createdAt desc)`;
 
-const popularQuery = groq`*[Popular == true]{
+export const popularQuery = groq`*[Popular == true]{
   ...,
   author->,
   categories[]->
 } | order(_createdAt desc)`;
 
-const categoryQuery = groq`*[_type == "category"]{
+export const categoryQuery = groq`*[_type == "category"]{
   ...,
 } | order(title)`;
 

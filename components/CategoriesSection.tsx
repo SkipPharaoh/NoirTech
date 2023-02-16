@@ -21,7 +21,7 @@ export default function CategoriesSection({
       <div key={category._id}>
         <ClientSideRoute
           route={{
-            pathname: `/${category.slug.current}`,
+            pathname: `/categories/${category.slug.current}`,
             query: { search: category.title },
           }}
         >
