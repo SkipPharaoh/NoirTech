@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Logo from "../public/favicon.ico";
+import { headerMenu } from "../lib/HeaderMenus";
+import HeaderButton from "./HeaderButton";
 
 export default function Header() {
   const [openNav, setOpenNav] = useState<boolean>(true);
@@ -35,10 +37,17 @@ export default function Header() {
       {/* TODO: convert below too a menu  */}
       <div>
         <ul className="hidden sm:flex">
-          <li className="p-2">Categories</li>
-          <li className="p-2">Company</li>
-          <li className="p-2">Support</li>
-          <li className="p-2">Legal</li>
+          {headerMenu.map((menu) => {
+            return (
+              <li className="" key={menu.name}>
+                <HeaderButton
+                  headerItem={menu.name}
+                  headerLink={menu.link}
+                  type="desktop"
+                />
+              </li>
+            );
+          })}
         </ul>
       </div>
       {/* Mobile button */}
@@ -58,18 +67,17 @@ export default function Header() {
         } right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300 text-white z-10`}
       >
         <ul>
-          <li className="p-4 text-4xl hover:text-gray-500">
-            <Link href="#">Categories</Link>
-          </li>
-          <li className="p-4 text-4xl hover:text-gray-500">
-            <Link href="#">Company</Link>
-          </li>
-          <li className="p-4 text-4xl hover:text-gray-500">
-            <Link href="#">Support</Link>
-          </li>
-          <li className="p-4 text-4xl hover:text-gray-500">
-            <Link href="#">Legal</Link>
-          </li>
+          {headerMenu.map((menu) => {
+            return (
+              <li className="" key={menu.name}>
+                <HeaderButton
+                  headerItem={menu.name}
+                  headerLink={menu.link}
+                  type="mobile"
+                />
+              </li>
+            );
+          })}
         </ul>
       </div>
     </header>
