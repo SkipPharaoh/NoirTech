@@ -16,6 +16,11 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "staff",
+      title: "BLK Tech ODB Staff",
+      type: "boolean",
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
@@ -31,6 +36,54 @@ export default defineType({
       options: {
         hotspot: true,
       },
+    }),
+    defineField({
+      name: "socials",
+      type: "array",
+      title: "Social Media",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "platform",
+              type: "string",
+              title: "Social Media Platform",
+              options: {
+                list: [
+                  { title: "Twitter", value: "twitter" },
+                  { title: "LinkedIn", value: "linkedin" },
+                  { title: "Facebook", value: "facebook" },
+                  { title: "Instagram", value: "instagram" },
+                  { title: "TikTok", value: "tiktok" },
+                  { title: "Website", value: "website" },
+                ],
+              },
+            },
+            {
+              name: "username",
+              type: "string",
+              title: "Username",
+            },
+          ],
+          preview: {
+            select: {
+              platform: "platform",
+              username: "username",
+            },
+            prepare: ({ platform, username }) => ({
+              title:
+                platform === "Website" || platform === "website"
+                  ? username
+                  : `${platform}: ${username}`,
+              subtitle:
+                platform === "Website" || platform === "website"
+                  ? username
+                  : `www.${platform}.com/${username}`,
+            }),
+          },
+        },
+      ],
     }),
     defineField({
       name: "bio",

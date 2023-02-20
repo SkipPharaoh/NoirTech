@@ -22,6 +22,14 @@ interface Author extends Base {
   name: string;
   slug: Slug;
   profession: string;
+  staff: string;
+  socials: Social[];
+}
+
+interface Social {
+  _key: string;
+  platform: string;
+  username: string;
 }
 
 interface Image {
