@@ -2,18 +2,60 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Author from "./Author";
+import { groq } from "next-sanity";
+import { client } from "../lib/sanity.client";
+import { notFound } from "next/navigation";
+import { PortableText } from "@portabletext/react";
+import post from "../schemas/post";
+import { RichTextComponents } from "./RichTextComponents";
+import urlFor from "../lib/urlFor";
 
-export default function AuthorDetailsPage() {
+interface AuthorDetailsPageProps {
+  slug: string;
+}
+
+export default async function AuthorDetailsPage({
+  slug,
+}: AuthorDetailsPageProps) {
+  const query = groq`*[_type == "author" && slug.current == $slug][0]
+    {
+        ...,
+    }
+    `;
+
+  const author: Author = await client.fetch(query, { slug });
+
+  const { bio, image, name, profession, staff, socials } = author;
+
+  const hasBio = !!bio ? (
+    <PortableText value={author.bio} components={RichTextComponents} />
+  ) : (
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident expedita unde alias aspernatur nobis eaque suscipit nostrum repellendus itaque corporis, saepe voluptatem optio quaerat consequatur autem aperiam cum maxime sint?"
+  );
+  const hasImage = !!image ? urlFor(image).url() : "/Images/author/author1.jpg";
+  const hasName = !!name ? name : "Author Name";
+  const hasProfession = !!profession
+    ? profession
+    : "BLK Tech ODB Network Contributor";
+  const hasStaff = !!staff && (
+    <strong className="uppercase">BLK Tech On Da Block Staff</strong>
+  );
+
+  if (!author) {
+    notFound();
+  }
+
   /*
     TODO: Load author details from the CMS and pass them to the AuthorDetails component.
     */
+
   return (
     <div className="container py-6">
       <div className="AuthorCard text-center lg:text-left flex flex-col w-full pt-0 lg:pt-6 mb-6 sm:mb-12 lg:flex-row lg:justify-center">
         <div className="AuthorImage mx-auto lg:mx-0 lg:mr-6">
           <div className="relative overflow-hidden">
             <Image
-              src={"/Images/author/author1.jpg"}
+              src={hasImage}
               width={240}
               height={240}
               alt={""}
@@ -25,48 +67,44 @@ export default function AuthorDetailsPage() {
         <div className="items-center max-w-2xl">
           <div className="">
             <h1 className="text-gray-900 text-4xl sm:text-5xl md:text-6xl mb-3 tracking-tight leading-10 font-extrabold sm:mb-5 sm:leading-none sm:max-w-4xl">
-              Author Name
+              {hasName}
             </h1>
             <p className="text-gray-600 text-base lg:text-xl mb-5">
-              <strong className="uppercase">Staff</strong>
+              {hasStaff}
               <br />
-              BLK Tech Network Contributor
+              {hasProfession}
             </p>
           </div>
-          <div className="text-left mb-6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-            expedita unde alias aspernatur nobis eaque suscipit nostrum
-            repellendus itaque corporis, saepe voluptatem optio quaerat
-            consequatur autem aperiam cum maxime sint?
-          </div>
+          <div className="text-left mb-6">{hasBio}</div>
           <div className="mb-6">
-            <a
-              href=""
-              target="_blank"
-              aria-label="facebook"
-              title="facebook"
-              className="rounded-full inline-flex justify-center items-center hover:shadow-md text-gray-800 bg-gray-100 hover:bg-gray-200 mr-1 mt-6 shadow h-12 w-12 share-facebook"
-            >
-              F
-            </a>
-            <a
-              href=""
-              target="_blank"
-              aria-label="facebook"
-              title="facebook"
-              className="rounded-full inline-flex justify-center items-center hover:shadow-md text-gray-800 bg-gray-100 hover:bg-gray-200 mr-1 mt-6 shadow h-12 w-12 share-facebook"
-            >
-              F
-            </a>
-            <a
-              href=""
-              target="_blank"
-              aria-label="facebook"
-              title="facebook"
-              className="rounded-full inline-flex justify-center items-center hover:shadow-md text-gray-800 bg-gray-100 hover:bg-gray-200 mr-1 mt-6 shadow h-12 w-12 share-facebook"
-            >
-              F
-            </a>
+            {socials &&
+              socials.map((social) => {
+                const website =
+                  social.platform === "website" ? "globe" : social.platform;
+
+                const url =
+                  social.platform === "website"
+                    ? `${social.username}`
+                    : `${social.platform}.com/${social.username}`;
+
+                return (
+                  <a
+                    href={`https://www.${url}`}
+                    key={social._key}
+                    target="_blank"
+                    aria-label="facebook"
+                    title="facebook"
+                    className="rounded-full inline-flex justify-center items-center hover:shadow-md text-gray-800 bg-gray-100 hover:bg-gray-200 mr-4 mt-6 shadow h-12 w-12 share-facebook"
+                  >
+                    <Image
+                      src={`https://img.icons8.com/ios-filled/512/${website}.png`}
+                      alt={social.platform}
+                      width={20}
+                      height={20}
+                    />
+                  </a>
+                );
+              })}
           </div>
         </div>
       </div>
@@ -103,6 +141,7 @@ function Post() {
               alt=""
               className="z-0 w-full hover:drop-shadow-md transition ease-in-out duration-150 cursor-pointer lazyloaded"
               fill
+              sizes="(max-width: 600px) 100vw, 600px"
             />
           </div>
         </Link>

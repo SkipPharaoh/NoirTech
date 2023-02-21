@@ -10,17 +10,17 @@ export const footerMenu = [
 
 export const Icons = [
   {
-    name: "logo-twitter",
+    name: "twitter",
     link: "#",
     icon: "https://img.icons8.com/ios-filled/512/twitter.png",
   },
   {
-    name: "logo-github",
+    name: "github",
     link: "#",
     icon: "https://img.icons8.com/ios-filled/512/github-2.png",
   },
   {
-    name: "logo-linkedin",
+    name: "linkedin",
     link: "#",
     icon: "https://img.icons8.com/ios-filled/512/linkedin-2.png",
   },
