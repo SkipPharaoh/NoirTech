@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import urlFor from "../lib/urlFor";
 import Author from "./Author";
-import ClientSideRoute from "./ClientSideRoute";
+import LinkTo from "./core/LinkTo";
 
 export const PostType = {
   primary: "bg-blue-500 hover:bg-blue-700 text-white font-bold rounded",
@@ -11,20 +10,12 @@ export const PostType = {
   delete: "bg-red-300 hover:bg-red-500 text-white font-bold rounded",
 };
 
-export const PostSize = {
-  sm: "py-2 px-4 text-xs",
-  lg: "py-3 px-6 text-lg",
-};
-
-declare type PostSizeOption = "sm" | "md" | "lg" | "row";
+declare type PostSizeOption = "sm" | "md" | "lg" | "row" | "author";
 
 interface PostProps {
   posts: Post;
   size: PostSizeOption;
 }
-type Prop = {
-  posts: Post[];
-};
 
 export default function Post({ posts, size }: PostProps) {
   const {
@@ -55,6 +46,9 @@ export default function Post({ posts, size }: PostProps) {
     {
       cardContainer: string;
       imageContainer: string;
+      imageLink?: string;
+      imageBox?: string;
+      image?: string;
       imageWidth: number;
       imageHeight: number;
       cardBody: string;
@@ -68,11 +62,14 @@ export default function Post({ posts, size }: PostProps) {
       cardContainer:
         "hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md",
       imageContainer: "image",
+      imageLink: "image-link",
+      imageBox: "image-box",
+      image: "image",
       imageWidth: 600,
       imageHeight: 400,
       cardBody: "flex justify-center flex-col py-4",
       categoryContainer: "cat",
-      category: "line-clamp-1",
+      category: "line-clamp-1 text-orange-600",
       title: "text-xl font-bold text-gray-800 hover:text-gray-600",
       author: "author",
     },
@@ -80,11 +77,14 @@ export default function Post({ posts, size }: PostProps) {
       cardContainer:
         "hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md",
       imageContainer: "image",
+      imageLink: "image-link",
+      imageBox: "image-box",
+      image: "image",
       imageWidth: 600,
       imageHeight: 400,
       cardBody: "flex justify-center flex-col py-4",
       categoryContainer: "cat",
-      category: "cat",
+      category: "cat text-orange-600",
       title: "title text-xl font-bold text-gray-800 hover:text-gray-600",
       author: "author",
     },
@@ -92,6 +92,9 @@ export default function Post({ posts, size }: PostProps) {
       cardContainer:
         "grid xl:grid-cols-2 hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md",
       imageContainer: "image",
+      imageLink: "image-link",
+      imageBox: "image-box",
+      image: "image",
       imageWidth: 600,
       imageHeight: 600,
       cardBody: "flex justify-center flex-col px-6",
@@ -104,6 +107,9 @@ export default function Post({ posts, size }: PostProps) {
     row: {
       cardContainer: "flex gap-5",
       imageContainer: "image flex flex-col justify-start",
+      imageLink: "image-link",
+      imageBox: "image-box",
+      image: "image ",
       imageWidth: 300,
       imageHeight: 200,
       cardBody: "flex justify-center flex-col",
@@ -112,21 +118,57 @@ export default function Post({ posts, size }: PostProps) {
       title: "text-xl font-bold text-gray-800 hover:text-gray-600",
       author: "author",
     },
+    author: {
+      cardContainer:
+        "flex flex-row-reverse lg:flex-col mb-6 pb-6 border-b border-gray-200 lg:mb-0 lg:pb-0 lg:border-none",
+      imageContainer: "flex-none block ml-6 lg:ml-0",
+      imageLink: "relative block",
+      imageBox:
+        "relative mb-4 shadow rounded-lg lg:aspect-[3/2] aspect-[1/1] overflow-hidden",
+      image:
+        "z-0 w-full hover:drop-shadow-md transition ease-in-out duration-150 cursor-pointer lazyloaded",
+      imageWidth: 300,
+      imageHeight: 200,
+      cardBody: "flex flex-col flex-grow flex-1",
+      categoryContainer: "cat",
+      category:
+        "text-orange-600 hover:text-orange-800 flex items-center hover:underline uppercase font-semibold tracking-widest leading-none text-xs lg:text-sm pb-2",
+      title:
+        "tracking-[-0.0375em] leading-6 font-semibold lg:leading-7 text-gray-800 hover:underline text-xl lg:text-2xl pb-2 title text-xl font-bold text-gray-800 hover:text-gray-600",
+      author: "author",
+    },
   };
+  const imageComponent =
+    size === "author" ? (
+      <Image
+        src={hasImage}
+        alt={title}
+        fill
+        sizes="(max-width: 600px) 100vw, 600px"
+        className={sizeClass[size].image}
+      />
+    ) : (
+      <Image
+        src={hasImage}
+        alt={title}
+        width={sizeClass[size].imageWidth}
+        height={sizeClass[size].imageHeight}
+        className={sizeClass[size].image}
+      />
+    );
 
   return (
-    <ClientSideRoute route={postRoute}>
+    <LinkTo href={postRoute}>
       <div className="group">
         {/* Difference here between largePost & the sm/md post */}
         <div className={sizeClass[size].cardContainer}>
           <div className={sizeClass[size].imageContainer}>
-            {/* difference here for the image width */}
-            <Image
-              src={hasImage}
-              alt={title}
-              width={sizeClass[size].imageWidth}
-              height={sizeClass[size].imageHeight}
-            />
+            <div className={sizeClass[size].imageLink}>
+              <div className={sizeClass[size].imageBox}>
+                {/* difference here for the image width */}
+                {imageComponent}
+              </div>
+            </div>
           </div>
 
           {/* difference here between large & sm/md posts */}
@@ -145,6 +187,6 @@ export default function Post({ posts, size }: PostProps) {
           </div>
         </div>
       </div>
-    </ClientSideRoute>
+    </LinkTo>
   );
 }

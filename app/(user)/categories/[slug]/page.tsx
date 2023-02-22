@@ -2,7 +2,7 @@ import { groq } from "next-sanity";
 import { client } from "../../../../lib/sanity.client";
 import Image from "next/image";
 import urlFor from "../../../../lib/urlFor";
-import ClientSideRoute from "../../../../components/ClientSideRoute";
+import LinkTo from "../../../../components/core/LinkTo";
 
 export const dynamic = "force-dynamic";
 interface Props {
@@ -82,7 +82,7 @@ export default async function Post({ params: { slug }, searchParams }: Props) {
     return (
       <div className="group" key={blogPost._id}>
         <div className="hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md">
-          <ClientSideRoute route={`/post/${blogPost.slug.current}`}>
+          <LinkTo href={`/post/${blogPost.slug.current}`}>
             <div className="images">
               <Image
                 src={urlFor(blogPost.mainImage)?.url() ?? ""}
@@ -110,7 +110,7 @@ export default async function Post({ params: { slug }, searchParams }: Props) {
               </p>
               {/* <Author></Author> */}
             </div>
-          </ClientSideRoute>
+          </LinkTo>
         </div>
       </div>
     );

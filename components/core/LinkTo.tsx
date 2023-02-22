@@ -1,22 +1,22 @@
 "use client";
 
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 
-type Route = {
-  pathname: string;
-  query?: { search: string };
-};
-
-interface ClientSideRouteProps {
+interface LinkToProps extends LinkProps {
   children: React.ReactNode;
-  route: Route | string;
+  className?: string;
+  target?: string;
+  title?: string;
 }
 
-export default function ClientSideRoute({
+export default function LinkTo({
   children,
-  route,
-}: ClientSideRouteProps) {
-  const path = route as Route;
+  className,
+  target,
+  title,
+  href,
+  as,
+}: LinkToProps) {
   // let pathArray = path.pathname?.split("/");
   // pathArray?.shift();
 
@@ -28,5 +28,15 @@ export default function ClientSideRoute({
   // });
   // console.log(pathArray?.toString(), path.pathname);
 
-  return <Link href={path.pathname ?? route}>{children}</Link>;
+  return (
+    <Link
+      href={href}
+      className={className}
+      as={as}
+      target={target}
+      title={title}
+    >
+      {children}
+    </Link>
+  );
 }

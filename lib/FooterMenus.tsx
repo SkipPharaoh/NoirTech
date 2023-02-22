@@ -3,7 +3,7 @@ export const footerMenu = [
   { name: "Privacy Policy", link: "/privacy-policy" },
   { name: "Cookie Policy", link: "/cookie-policy" },
   { name: "Advertising Policy", link: "/ads-policy" },
-  { name: "Recommendation", link: "/recommendation" },
+  // { name: "Recommendation", link: "/recommendation" },
   { name: "Contact Support", link: "/contact" },
   // { name: "Accessibility", link: "" },
 ];

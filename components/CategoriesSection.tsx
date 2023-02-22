@@ -1,4 +1,4 @@
-import ClientSideRoute from "./ClientSideRoute";
+import LinkTo from "./core/LinkTo";
 
 interface CategoriesSectionProps {
   categoryInfo: Category[];
@@ -19,30 +19,22 @@ export default function CategoriesSection({
 
     return (
       <div key={category._id}>
-        <ClientSideRoute
-          route={{
+        <LinkTo
+          href={{
             pathname: `/categories/${category.slug.current}`,
             query: { search: category.title },
           }}
+          as={`/categories/${category.slug.current}`}
         >
           <div
             className="p-20 m-2 text-center border-black border-solid border-2"
             style={bg}
           >
-            <h1
-              className="text-gray-400"
-              style={{
-                color: "white",
-                textShadow:
-                  "1px 1px 12px black, 0 0 25px red, 0 0 15px darkblue",
-              }}
-            >
+            <h1 className="text-black font-extrabold text-xl m-2 bg-white">
               {category.title}
             </h1>
-
-            {/* <p>{category.description}</p> */}
           </div>
-        </ClientSideRoute>
+        </LinkTo>
       </div>
     );
   });

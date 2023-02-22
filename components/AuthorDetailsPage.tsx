@@ -9,6 +9,7 @@ import { PortableText } from "@portabletext/react";
 import post from "../schemas/post";
 import { RichTextComponents } from "./RichTextComponents";
 import urlFor from "../lib/urlFor";
+import LinkTo from "./core/LinkTo";
 
 interface AuthorDetailsPageProps {
   slug: string;
@@ -37,17 +38,13 @@ export default async function AuthorDetailsPage({
   const hasProfession = !!profession
     ? profession
     : "BLK Tech ODB Network Contributor";
-  const hasStaff = !!staff && (
-    <strong className="uppercase">BLK Tech On Da Block Staff</strong>
-  );
+  const hasStaff = !!staff
+    ? "BLK Tech On Da Block Staff"
+    : "BLK Tech On Da Block Contributor";
 
   if (!author) {
     notFound();
   }
-
-  /*
-    TODO: Load author details from the CMS and pass them to the AuthorDetails component.
-    */
 
   return (
     <div className="container py-6">
@@ -70,7 +67,7 @@ export default async function AuthorDetailsPage({
               {hasName}
             </h1>
             <p className="text-gray-600 text-base lg:text-xl mb-5">
-              {hasStaff}
+              <strong className="uppercase">{hasStaff}</strong>
               <br />
               {hasProfession}
             </p>
@@ -88,7 +85,7 @@ export default async function AuthorDetailsPage({
                     : `${social.platform}.com/${social.username}`;
 
                 return (
-                  <a
+                  <LinkTo
                     href={`https://www.${url}`}
                     key={social._key}
                     target="_blank"
@@ -102,7 +99,7 @@ export default async function AuthorDetailsPage({
                       width={20}
                       height={20}
                     />
-                  </a>
+                  </LinkTo>
                 );
               })}
           </div>
@@ -132,7 +129,7 @@ function Post() {
       {/* cardContainer above */}
       {/* imageContainer below */}
       <div className="flex-none block ml-6 lg:ml-0">
-        <Link href={"/"} className="relative block">
+        <LinkTo href={"/"} className="relative block">
           <div className="relative mb-4 shadow rounded-lg lg:aspect-[3/2] aspect-[1/1] overflow-hidden">
             {/* imageWidth */}
             {/* imageHeight */}
@@ -144,30 +141,30 @@ function Post() {
               sizes="(max-width: 600px) 100vw, 600px"
             />
           </div>
-        </Link>
+        </LinkTo>
       </div>
 
       {/* cardBody */}
       <div className="flex flex-col flex-grow flex-1">
         {/* categoryContainer */}
         <div className="cat">
-          <Link
+          <LinkTo
             href={"/"}
             className="text-orange-600 hover:text-orange-800 flex items-center hover:underline uppercase font-semibold tracking-widest leading-none text-xs lg:text-sm pb-2"
           >
             {/* category */}
             <p>Business, Travel</p>
-          </Link>
+          </LinkTo>
         </div>
 
         {/* title */}
         <div className="tracking-[-0.0375em] leading-6 font-semibold lg:leading-7 text-gray-800 hover:underline text-xl lg:text-2xl pb-2">
-          <Link
+          <LinkTo
             href={"/"}
             className="title text-xl font-bold text-gray-800 hover:text-gray-600"
           >
             Your most unhappy customers are your greatest source of learning
-          </Link>
+          </LinkTo>
         </div>
 
         {/* author */}

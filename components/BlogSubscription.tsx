@@ -1,4 +1,5 @@
 import React from "react";
+import LinkTo from "./core/LinkTo";
 
 export default function BlogSubscription() {
   return (
@@ -27,12 +28,12 @@ export default function BlogSubscription() {
           </p>
           <p className="my-2">
             Read our{" "}
-            <a
+            <LinkTo
               className="text-gray-800 hover:underline font-medium underline"
               href="/privacy-policy"
             >
               privacy policy
-            </a>{" "}
+            </LinkTo>{" "}
             for more information.
           </p>
         </div>

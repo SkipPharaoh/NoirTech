@@ -1,3 +1,5 @@
+import LinkTo from "./core/LinkTo";
+
 type HeaderButtonType = "mobile" | "desktop";
 
 interface HeaderButtonProps {
@@ -20,13 +22,13 @@ export default function HeaderButton({
     type === "mobile" ? headerStyle.mobile : headerStyle.desktop;
   return (
     // <li>
-    <a href={headerLink}>
+    <LinkTo href={headerLink}>
       <button
         className={`${headerClass} px-4 items-center rounded-full font-medium leading-6  hover:bg-gray-200 hover:text-gray-700`}
       >
         {headerItem}
       </button>
-    </a>
+    </LinkTo>
     // </li>
   );
 }

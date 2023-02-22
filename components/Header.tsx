@@ -2,11 +2,11 @@
 
 import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import Logo from "../public/favicon.ico";
 import { headerMenu } from "../lib/HeaderMenus";
 import HeaderButton from "./HeaderButton";
+import LinkTo from "./core/LinkTo";
 
 export default function Header() {
   const [openNav, setOpenNav] = useState<boolean>(true);
@@ -21,7 +21,7 @@ export default function Header() {
   return (
     <header className="flex items-center justify-between font-bold py-5 px-4 md:px-6 max-w-7xl mx-auto">
       <div>
-        <Link className="flex items-center space-x-2" href="/">
+        <LinkTo className="flex items-center space-x-2" href="/">
           <Image
             src={Logo}
             width={50}
@@ -32,9 +32,9 @@ export default function Header() {
           <h1 className="lg:text-2xl md:text-xl xl:text-2xl text-2xl ease-in duration-300">
             BLK Tech On Da Block
           </h1>
-        </Link>
+        </LinkTo>
       </div>
-      {/* TODO: convert below too a menu  */}
+
       <div>
         <ul className="hidden sm:flex">
           {headerMenu.map((menu) => {
