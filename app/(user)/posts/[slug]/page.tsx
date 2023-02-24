@@ -9,6 +9,8 @@ import Author from "../../../../components/Author";
 import { ShareIcon } from "@heroicons/react/24/solid";
 import Divider from "../../../../components/Divider";
 import { notFound } from "next/navigation";
+import LinkTo from "../../../../components/core/LinkTo";
+import Route from "../../../../components/core/Route";
 
 interface Props {
   params: {
@@ -47,23 +49,27 @@ export default async function Post({ params: { slug } }: Props) {
                 <div className="flex items-center">
                   <div className="inline-flex mr-3 h-12 w-12 rounded-full drop-shadow">
                     <div className=" relative  overflow-hidden ">
-                      <Image
-                        src={
-                          (post.author.image &&
-                            urlFor(post.author.image).url()) ??
-                          "/Images/author/author1.jpg"
-                        }
-                        alt={post.author.name}
-                        width={50}
-                        height={50}
-                        className="z-0  h-12 w-12 rounded-full drop-shadow hover:drop-shadow-md transition ease-in-out duration-150 cursor-pointer ls-is-cached lazyloaded"
-                      />
+                      <Route push={`/author/${post.author.slug.current}`}>
+                        <Image
+                          src={
+                            (post.author.image &&
+                              urlFor(post.author.image).url()) ??
+                            "/Images/author/author1.jpg"
+                          }
+                          alt={post.author.name}
+                          width={50}
+                          height={50}
+                          className="z-0  h-12 w-12 rounded-full drop-shadow hover:drop-shadow-md transition ease-in-out duration-150 cursor-pointer ls-is-cached lazyloaded"
+                        />
+                      </Route>
                     </div>
                   </div>
                   <div className="font-normal uppercase text-sm tracking-wider text-gray-800 flex">
                     <p>BY&nbsp;</p>
                     <p className="hover:underline uppercase font-semibold tracking-wider text-blue-600">
-                      {post.author.name}
+                      <Route push={`/author/${post.author.slug.current}`}>
+                        {post.author.name}
+                      </Route>
                     </p>
                     &nbsp;•&nbsp;
                   </div>

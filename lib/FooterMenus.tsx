@@ -4,7 +4,7 @@ export const footerMenu = [
   { name: "Cookie Policy", link: "/cookie-policy" },
   { name: "Advertising Policy", link: "/ads-policy" },
   // { name: "Recommendation", link: "/recommendation" },
-  { name: "Contact Support", link: "/contact" },
+  { name: "Contact Us", link: "/contact" },
   // { name: "Accessibility", link: "" },
 ];
 

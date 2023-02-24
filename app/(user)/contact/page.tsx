@@ -1,6 +1,6 @@
 import React from "react";
-import ContactSupport from "../../../components/Legal/ContactSupport";
+import ContactUs from "../../../components/Legal/ContactUs";
 
 export default function page() {
-  return <ContactSupport />;
+  return <ContactUs />;
 }
