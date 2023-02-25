@@ -1,16 +1,14 @@
-import { groq } from "next-sanity";
-import { client } from "../../../../lib/sanity.client";
-import Image from "next/image";
-import urlFor from "../../../../lib/urlFor";
-import { PortableText } from "@portabletext/react";
-import { RichTextComponents } from "../../../../components/RichTextComponents";
-import RelatedBlog from "../../../../components/RelatedBlog";
-import Author from "../../../../components/Author";
 import { ShareIcon } from "@heroicons/react/24/solid";
-import Divider from "../../../../components/Divider";
+import { PortableText } from "@portabletext/react";
+import { groq } from "next-sanity";
+import Image from "next/image";
 import { notFound } from "next/navigation";
-import LinkTo from "../../../../components/core/LinkTo";
+import Divider from "../../../../components/Divider";
+import RelatedBlog from "../../../../components/RelatedBlog";
+import { RichTextComponents } from "../../../../components/RichTextComponents";
 import Route from "../../../../components/core/Route";
+import { client } from "../../../../lib/sanity.client";
+import urlFor from "../../../../lib/urlFor";
 
 interface Props {
   params: {
