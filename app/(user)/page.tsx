@@ -1,12 +1,12 @@
 import { groq } from "next-sanity";
 import { previewData } from "next/headers";
+import CategoriesSection from "../../components/CategoriesSection";
 import LatestBlogList from "../../components/LatestBlogList";
+import PopularSection from "../../components/PopularSection";
 import PreviewBlogList from "../../components/PreviewBlogList";
 import PreviewSuspense from "../../components/PreviewSuspense";
-import { client } from "../../lib/sanity.client";
 import TrendingSection from "../../components/TrendingSection";
-import PopularSection from "../../components/PopularSection";
-import CategoriesSection from "../../components/CategoriesSection";
+import { client } from "../../lib/sanity.client";
 
 export const query = groq`*[_type == "post"]{
   ...,

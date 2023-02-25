@@ -1,5 +1,4 @@
 import Link from "next/link";
-import LinkTo from "./core/LinkTo";
 
 interface Props {
   children: React.ReactNode;

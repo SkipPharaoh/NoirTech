@@ -1,4 +1,3 @@
-import React from "react";
 import LinkTo from "./core/LinkTo";
 
 export default function BlogSubscription() {

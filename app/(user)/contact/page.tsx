@@ -1,4 +1,3 @@
-import React from "react";
 import ContactUs from "../../../components/Legal/ContactUs";
 
 export default function page() {

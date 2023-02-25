@@ -1,6 +1,5 @@
-import React from "react";
-import AuthorDetailsPage from "../../../../components/AuthorDetailsPage";
 import { groq } from "next-sanity";
+import AuthorDetailsPage from "../../../../components/AuthorDetailsPage";
 import { client } from "../../../../lib/sanity.client";
 
 interface Props {

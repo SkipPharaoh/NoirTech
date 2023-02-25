@@ -1,8 +1,8 @@
 import { groq } from "next-sanity";
-import { client } from "../../../../lib/sanity.client";
 import Image from "next/image";
-import urlFor from "../../../../lib/urlFor";
 import LinkTo from "../../../../components/core/LinkTo";
+import { client } from "../../../../lib/sanity.client";
+import urlFor from "../../../../lib/urlFor";
 
 export const dynamic = "force-dynamic";
 interface Props {

@@ -1,14 +1,10 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import Author from "./Author";
-import { groq } from "next-sanity";
-import { client } from "../lib/sanity.client";
-import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
-import post from "../schemas/post";
-import { RichTextComponents } from "./RichTextComponents";
+import { groq } from "next-sanity";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { client } from "../lib/sanity.client";
 import urlFor from "../lib/urlFor";
+import { RichTextComponents } from "./RichTextComponents";
 import LinkTo from "./core/LinkTo";
 
 interface AuthorDetailsPageProps {

@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Breadcrumb from "./Breadcrumb";
 import BreadcrumbItem from "./BreadcrumbItem";
-import Divider from "./Divider";
 
 interface Breadcrumbs {
   href: string;

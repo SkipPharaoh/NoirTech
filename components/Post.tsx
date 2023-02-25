@@ -1,6 +1,5 @@
 import Image from "next/image";
 import urlFor from "../lib/urlFor";
-import Author from "./Author";
 import LinkTo from "./core/LinkTo";
 
 export const PostType = {

@@ -1,5 +1,5 @@
 import { createClient } from "next-sanity";
-import { projectId, dataset, apiVersion, isProd } from "./config";
+import { apiVersion, dataset, isProd, projectId } from "./config";
 
 export const client = createClient({
   projectId,

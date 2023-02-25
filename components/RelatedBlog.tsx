@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import Author from "./Author";
 import LinkTo from "./core/LinkTo";
