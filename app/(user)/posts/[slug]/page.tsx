@@ -31,6 +31,24 @@ export default async function Post({ params: { slug } }: Props) {
     notFound();
   }
 
+  const incrementPostViews = async () => {
+    await client
+      .patch(post._id)
+      .inc({ views: 1 })
+      .commit()
+      .then(() => {
+        console.log("Views incremented");
+      })
+      .catch((error) => {
+        console.log("Views not incremented", error);
+      });
+  };
+
+  incrementPostViews();
+
+  // console.log(postViews);
+  console.log(post.views);
+
   return (
     <div className="w-full bg-white">
       <div className="container">
