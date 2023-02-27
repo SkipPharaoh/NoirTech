@@ -11,8 +11,8 @@ export default function RelatedBlog() {
         {Post()}
         {Post()}
         {Post()}
-        {Post()}
-        {Post()}
+        {/* {Post()}
+        {Post()} */}
       </div>
     </section>
   );

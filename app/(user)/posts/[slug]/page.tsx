@@ -1,4 +1,3 @@
-import { ShareIcon } from "@heroicons/react/24/solid";
 import { PortableText } from "@portabletext/react";
 import { groq } from "next-sanity";
 import Image from "next/image";
@@ -7,6 +6,7 @@ import Divider from "../../../../components/Divider";
 import RelatedBlog from "../../../../components/RelatedBlog";
 import { RichTextComponents } from "../../../../components/RichTextComponents";
 import Route from "../../../../components/core/Route";
+import ShareButton from "../../../../components/core/ShareButton";
 import { client } from "../../../../lib/sanity.client";
 import urlFor from "../../../../lib/urlFor";
 
@@ -40,14 +40,11 @@ export default async function Post({ params: { slug } }: Props) {
         console.log("Views incremented");
       })
       .catch((error) => {
-        console.log("Views not incremented", error);
+        console.log("Views not incremented");
       });
   };
 
-  incrementPostViews();
-
-  // console.log(postViews);
-  console.log(post.views);
+  // incrementPostViews();
 
   return (
     <div className="w-full bg-white">
@@ -99,14 +96,7 @@ export default async function Post({ params: { slug } }: Props) {
                 </div>
 
                 <div className="items-center hidden sm:flex">
-                  <p className="font-semibold text-gray-800">Share</p>
-                  <a
-                    href=""
-                    // onClick={() => {// shareThis()}}
-                    className="rounded-full inline-flex justify-center items-center hover:shadow-md text-gray-800 bg-gray-100 hover:bg-gray-200 ml-1 share-button cursor-pointer h-10 w-10 share-copy"
-                  >
-                    <ShareIcon className="h-5 w-5" />
-                  </a>
+                  <ShareButton title={true} />
                 </div>
               </div>
             </div>

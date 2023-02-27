@@ -82,7 +82,7 @@ export default async function Post({ params: { slug }, searchParams }: Props) {
     return (
       <div className="group" key={blogPost._id}>
         <div className="hover:bg-gray-400 hover:bg-opacity-10 hover:backdrop-blur-lg rounded hover:drop-shadow-xl hover:shadow-md">
-          <LinkTo href={`/post/${blogPost.slug.current}`}>
+          <LinkTo href={`/posts/${blogPost.slug.current}`}>
             <div className="images">
               <Image
                 src={urlFor(blogPost.mainImage)?.url() ?? ""}
