@@ -1,6 +1,8 @@
 "use client";
 
 import Link, { LinkProps } from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 interface LinkToProps extends LinkProps {
   children: React.ReactNode;
@@ -27,6 +29,14 @@ export default function LinkTo({
   //   return "/" + pathArray?.slice(0, index + 1).join("/");
   // });
   // console.log(pathArray?.toString(), path.pathname);
+
+  /***
+   * Temporary fix below for scroll to top on page change
+   ***/
+  const pathname = usePathname();
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [pathname]);
 
   return (
     <Link
