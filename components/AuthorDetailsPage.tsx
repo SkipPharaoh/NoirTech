@@ -4,6 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { client } from "../lib/sanity.client";
 import urlFor from "../lib/urlFor";
+import AuthorRelatedPost from "./AuthorRelatedPost";
 import { RichTextComponents } from "./RichTextComponents";
 import LinkTo from "./core/LinkTo";
 
@@ -108,63 +109,7 @@ export default async function AuthorDetailsPage({
         </h2>
       </div>
       <div className="lg:grid lg:grid-cols-3 lg:gap-6 xl:gap-12">
-        {Post()}
-        {Post()}
-        {Post()}
-        {Post()}
-        {Post()}
-        {Post()}
-      </div>
-    </div>
-  );
-}
-
-function Post() {
-  return (
-    <div className="flex flex-row-reverse lg:flex-col mb-6 pb-6 border-b border-gray-200 lg:mb-0 lg:pb-0 lg:border-none">
-      {/* cardContainer above */}
-      {/* imageContainer below */}
-      <div className="flex-none block ml-6 lg:ml-0">
-        <LinkTo href={"/"} className="relative block">
-          <div className="relative mb-4 shadow rounded-lg lg:aspect-[3/2] aspect-[1/1] overflow-hidden">
-            {/* imageWidth */}
-            {/* imageHeight */}
-            <Image
-              src={"/images/img1.jpg"}
-              alt=""
-              className="z-0 w-full hover:drop-shadow-md transition ease-in-out duration-150 cursor-pointer lazyloaded"
-              fill
-              sizes="(max-width: 600px) 100vw, 600px"
-            />
-          </div>
-        </LinkTo>
-      </div>
-
-      {/* cardBody */}
-      <div className="flex flex-col flex-grow flex-1">
-        {/* categoryContainer */}
-        <div className="cat">
-          <LinkTo
-            href={"/"}
-            className="text-orange-600 hover:text-orange-800 flex items-center hover:underline uppercase font-semibold tracking-widest leading-none text-xs lg:text-sm pb-2"
-          >
-            {/* category */}
-            <p>Business, Travel</p>
-          </LinkTo>
-        </div>
-
-        {/* title */}
-        <div className="tracking-[-0.0375em] leading-6 font-semibold lg:leading-7 text-gray-800 hover:underline text-xl lg:text-2xl pb-2">
-          <LinkTo
-            href={"/"}
-            className="title text-xl font-bold text-gray-800 hover:text-gray-600"
-          >
-            Your most unhappy customers are your greatest source of learning
-          </LinkTo>
-        </div>
-
-        {/* author */}
-        {/* <Author /> */}
+        <AuthorRelatedPost author={name} />
       </div>
     </div>
   );
