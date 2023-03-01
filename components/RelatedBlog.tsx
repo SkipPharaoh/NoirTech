@@ -1,68 +1,31 @@
-import Image from "next/image";
-import Author from "./Author";
-import LinkTo from "./core/LinkTo";
+import { groq } from "next-sanity";
+import { Fragment } from "react";
+import { client } from "../lib/sanity.client";
+import Post from "./Post";
 
-export default function RelatedBlog() {
+export default async function RelatedBlog({ category }: { category: string }) {
+  const query = groq`*[_type == "post" && $category in categories[]->title ]
+    {
+        ...,
+        author->,
+        categories[]->,
+    }`;
+
+  const posts: Post[] = await client.fetch(query, { category });
+
   return (
     <section>
       <h1 className="font-bold text-3xl pb-10">Related</h1>
 
       <div className="flex flex-col gap-10">
-        {Post()}
-        {Post()}
-        {Post()}
-        {/* {Post()}
-        {Post()} */}
+        {posts.map((relatedPost) => {
+          return (
+            <Fragment key={relatedPost._id}>
+              <Post posts={relatedPost} size="row" />
+            </Fragment>
+          );
+        })}
       </div>
     </section>
-  );
-}
-
-function Post() {
-  return (
-    <div className="flex gap-5">
-      {/* cardContainer above */}
-      {/* imageContainer below */}
-      <div className="image flex flex-col justify-start">
-        <LinkTo href={"/"}>
-          {/* imageWidth */}
-          {/* imageHeight */}
-          <Image
-            src={"/images/img1.jpg"}
-            alt=""
-            // className="rounded"
-            width={300}
-            height={200}
-          />
-        </LinkTo>
-      </div>
-
-      {/* cardBody */}
-      <div className="info flex justify-center flex-col">
-        {/* categoryContainer */}
-        <div className="cat">
-          <LinkTo href={"/"} className="text-orange-600 hover:text-orange-800">
-            {/* category */}
-            <p>Business, Travel</p>
-          </LinkTo>
-          <LinkTo href={"/"} className="text-gray-800 hover:text-gray-600">
-            - July 3, 2022
-          </LinkTo>
-        </div>
-
-        {/* title */}
-        <div className="title">
-          <LinkTo
-            href={"/"}
-            className="text-xl font-bold text-gray-800 hover:text-gray-600"
-          >
-            Your most unhappy customers are your greatest source of learning
-          </LinkTo>
-        </div>
-
-        {/* author */}
-        <Author />
-      </div>
-    </div>
   );
 }

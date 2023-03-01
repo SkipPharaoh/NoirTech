@@ -124,7 +124,7 @@ export default async function Post({ params: { slug } }: Props) {
         <Divider className="max-w-3xl mx-auto mb-16" />
 
         <div className="flex justify-center max-w-3xl mx-auto mb-10">
-          <RelatedBlog />
+          <RelatedBlog category={post.categories[0].title} />
         </div>
       </div>
     </div>
