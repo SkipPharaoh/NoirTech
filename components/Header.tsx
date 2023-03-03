@@ -74,6 +74,8 @@ export default function Header() {
                   headerItem={menu.name}
                   headerLink={menu.link}
                   type="mobile"
+                  isOpen={openNav}
+                  setIsOpen={setOpenNav}
                 />
               </li>
             );

@@ -4,7 +4,7 @@ import { client } from "../lib/sanity.client";
 import Post from "./Post";
 
 export default async function RelatedBlog({ category }: { category: string }) {
-  const query = groq`*[_type == "post" && $category in categories[]->title ]
+  const query = groq`*[_type == "post" && $category in categories[]->title ][0...3]
     {
         ...,
         author->,

@@ -123,7 +123,7 @@ export default function Post({ posts, size }: PostProps) {
       imageContainer: "flex-none block ml-6 lg:ml-0",
       imageLink: "relative block",
       imageBox:
-        "relative mb-4 shadow rounded-lg lg:aspect-[3/2] aspect-[1/1] overflow-hidden min-h-[75px] min-w-[75px]",
+        "relative mb-4 shadow rounded-lg lg:aspect-[3/2] aspect-[1/1] overflow-hidden min-h-[120px] min-w-[120px]",
       image:
         "z-0 w-full hover:drop-shadow-md transition ease-in-out duration-150 cursor-pointer lazyloaded",
       imageWidth: 300,
