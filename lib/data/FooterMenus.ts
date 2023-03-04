@@ -1,10 +1,7 @@
 export const footerMenu = [
-  { name: "Terms of Use", link: "/terms-of-service" },
-  // { name: "Cookie Policy", link: "/cookie-policy" },
+  { name: "Terms of Use", link: "/terms-and-conditions" },
   { name: "Privacy Policy", link: "/privacy-policy" },
   { name: "Advertising Policy", link: "/ads-policy" },
-  // { name: "Recommendation", link: "/recommendation" },
-  // { name: "Contact Us", link: "/contact" },
   { name: "Accessibility Policy", link: "/accessibility" },
 ];
 

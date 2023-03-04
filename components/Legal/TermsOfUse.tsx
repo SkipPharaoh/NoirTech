@@ -1,6 +1,6 @@
 import { TOSMenu } from "../../lib/data/TOSMenu";
 
-export default function TermsOfService() {
+export default function TermsOfUse() {
   return (
     <div className="w-full bg-white">
       <div className="container">
