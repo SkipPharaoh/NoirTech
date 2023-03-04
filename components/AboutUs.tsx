@@ -4,8 +4,10 @@ export default function AboutUs() {
       <div className="container">
         <div className="max-w-3xl mx-auto mb-16">
           <div className="mt-6 mb-6 lg:mb-12">
-            <h1 className="tracking-tight font-extrabold text-gray-900 sm:leading-none text-3xl mb-4 md:text-5xl text-center">
-              About Us
+            <h1>
+              <span className="mt-2 block text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl text-center">
+                About Us
+              </span>
             </h1>
             <h1 className="font-bold text-xl md:text-2xl my-4">Our Mission</h1>
             <p className="leading-6 tracking-[-0.0125em] block text-gray-500 text-lg mb-6 lg:text-xl">

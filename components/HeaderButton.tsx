@@ -29,6 +29,9 @@ export default function HeaderButton({
     if (type === "mobile") {
       setIsOpen && setIsOpen(!isOpen);
     }
+    isOpen === true
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "unset");
   };
 
   return (

@@ -1,4 +1,4 @@
-import { Icons, footerMenu } from "../lib/FooterMenus";
+import { Icons, footerMenu } from "../lib/data/FooterMenus";
 import BlogSubscription from "./BlogSubscription";
 import Divider from "./Divider";
 import FooterButton from "./FooterButton";

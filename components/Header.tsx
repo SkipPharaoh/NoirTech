@@ -3,7 +3,7 @@
 import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { useState } from "react";
-import { headerMenu } from "../lib/HeaderMenus";
+import { headerMenu } from "../lib/data/HeaderMenus";
 import Logo from "../public/favicon.ico";
 import HeaderButton from "./HeaderButton";
 import LinkTo from "./core/LinkTo";
