@@ -1,8 +1,8 @@
 export const footerMenu = [
   { name: "Terms of Use", link: "/terms-and-conditions" },
   { name: "Privacy Policy", link: "/privacy-policy" },
+  { name: "Acceptable Use", link: "/acceptable-use" },
   { name: "Advertising Policy", link: "/ads-policy" },
-  { name: "Accessibility Policy", link: "/accessibility" },
 ];
 
 export const Icons = [

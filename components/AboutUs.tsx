@@ -1,24 +1,26 @@
+import { legalTextStyling } from "../lib/styling/legalStyling";
+
 export default function AboutUs() {
+  const textStyling = legalTextStyling;
+
   return (
     <div className="w-full bg-white">
       <div className="container">
         <div className="max-w-3xl mx-auto mb-16">
           <div className="mt-6 mb-6 lg:mb-12">
             <h1>
-              <span className="mt-2 block text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl text-center">
+              <span className={`${textStyling.header} text-center`}>
                 About Us
               </span>
             </h1>
-            <h1 className="font-bold text-xl my-6">Our Mission</h1>
-            <p className="leading-6 tracking-[-0.0125em] my-4 text-lg">
+            <h1 className={textStyling.title}>Our Mission</h1>
+            <p className={textStyling.body}>
               To guide our audience through an increasingly complex professional
               career by humanizing technology, showcasing many different paths
               and filtering out the noise.
             </p>
-            <h1 className="font-bold text-xl my-6">
-              About BLK Tech On Da Block
-            </h1>
-            <p className="leading-6 tracking-[-0.0125em] my-4 text-lg">
+            <h1 className={textStyling.title}>About BLK Tech On Da Block</h1>
+            <p className={textStyling.body}>
               BLK Tech On Da Block is a digital publication that focuses on the
               intersection of technology and the Black community. We are a team
               of Black tech enthusiasts who are passionate about sharing our
@@ -28,7 +30,7 @@ export default function AboutUs() {
               our audience with the tools and resources they need to succeed in
               the tech industry.
             </p>
-            <p className="leading-6 tracking-[-0.0125em] my-4 text-lg">
+            <p className={textStyling.body}>
               We cover a wide range of topics, including but not limited to:
               tech news, tech reviews, career advice, career resources and more.
               The topics we cover are focused on the underrepresented and
@@ -39,11 +41,9 @@ export default function AboutUs() {
               that is always engaging, entertaining, and challenging. You don't
               have time to become an expert... but we'll help you become one.
             </p>
-            <h1 className="mt-2 block text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl text-center">
-              Contact Us
-            </h1>
-            <h1 className="font-bold text-xl my-6">Location</h1>
-            <p className="leading-6 tracking-[-0.0125em] my-4 text-gray-500 text-lg">
+            <h1 className={`${textStyling.header} text-center`}>Contact Us</h1>
+            <h1 className={textStyling.title}>Location</h1>
+            <p className={`${textStyling.body} text-gray-500`}>
               1234 Main Street, New York, NY 12345
             </p>
           </div>
