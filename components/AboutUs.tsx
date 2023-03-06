@@ -41,10 +41,24 @@ export default function AboutUs() {
               that is always engaging, entertaining, and challenging. You don't
               have time to become an expert... but we'll help you become one.
             </p>
-            <h1 className={`${textStyling.header} text-center`}>Contact Us</h1>
-            <h1 className={textStyling.title}>Location</h1>
+            <h1 className={`${textStyling.header} text-center`} id="contact">
+              Contact Us
+            </h1>
+            <h1 className={textStyling.title}>
+              Would you like to contribute to History Defined?
+            </h1>
             <p className={`${textStyling.body} text-gray-500`}>
-              1234 Main Street, New York, NY 12345
+              Email: contact@blktechodb.com
+            </p>
+            <p className={`${textStyling.body} text-gray-500`}>
+              Please include “Contribute to BLK Tech ODB” in the subject.
+            </p>
+            <h1 className={textStyling.title}>General Questions</h1>
+            <p className={`${textStyling.body} text-gray-500`}>
+              Email: contact@blktechodb.com
+            </p>
+            <p className={`${textStyling.body} text-gray-500`}>
+              Please include “General Questions” in the subject.
             </p>
           </div>
         </div>

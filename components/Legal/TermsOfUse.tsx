@@ -18,7 +18,7 @@ export default function TermsOfUse() {
             <h2 className="font-bold text-2xl mt-8 mb-4">Table of Contents</h2>
             <ol className={legalTextStyling.ol}>
               {TOSMenu.map((item) => (
-                <li key={item.name} className="my-4">
+                <li key={item.name} className="my-4 ml-8">
                   <a href={item.link} className={legalTextStyling.link}>
                     {item.name}
                   </a>
@@ -77,7 +77,7 @@ export default function TermsOfUse() {
             <p className="leading-6 tracking-[-0.0125em] my-4">
               For the purposes of these Terms and Conditions:
             </p>
-            <ul className="list-disc list-outside ml-6">
+            <ul className="list-disc list-outside ml-8">
               <li className={legalTextStyling.body}>
                 <p>
                   <strong>Affiliate</strong> means an entity that controls, is
