@@ -45,6 +45,10 @@ export default async function Post({ params: { slug } }: Props) {
   };
 
   // incrementPostViews();
+  type RelatedPosts = Awaited<ReturnType<typeof RelatedBlog>>;
+  const relatedPosts: RelatedPosts = await RelatedBlog({
+    category: post.categories[0].title,
+  });
 
   return (
     <div className="w-full bg-white">
@@ -124,7 +128,7 @@ export default async function Post({ params: { slug } }: Props) {
         <Divider className="max-w-3xl mx-auto mb-16" />
 
         <div className="flex justify-center max-w-3xl mx-auto mb-10">
-          <RelatedBlog category={post.categories[0].title} />
+          {relatedPosts}
         </div>
       </div>
     </div>

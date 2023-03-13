@@ -1,3 +1,5 @@
+import EmptyState from "../../../components/core/EmptyState";
+
 export default function loading() {
-  return "Author is loading...";
+  return <EmptyState type="loading" />;
 }

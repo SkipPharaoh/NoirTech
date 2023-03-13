@@ -3,7 +3,11 @@ import { Fragment } from "react";
 import { client } from "../lib/sanity.client";
 import Post from "./Post";
 
-export default async function RelatedBlog({ category }: { category: string }) {
+export default async function RelatedBlog({
+  category,
+}: {
+  category: string;
+}): Promise<JSX.Element> {
   const query = groq`*[_type == "post" && $category in categories[]->title ][0...3]
     {
         ...,

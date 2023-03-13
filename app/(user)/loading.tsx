@@ -1,7 +1,5 @@
-export default function loading() {
-  const text = "Sorry, page is loading...";
-  const button = "Go our home page";
+import EmptyState from "../../components/core/EmptyState";
 
-  //   return <EmptyState text={text} button={button} type="loading" />;
-  return text;
+export default function loading() {
+  return <EmptyState type="loading" />;
 }

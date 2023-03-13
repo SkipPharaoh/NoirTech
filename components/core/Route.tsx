@@ -9,9 +9,10 @@ interface RouteProps {
 
 export default function Route({ children, push }: RouteProps) {
   const router = useRouter();
+  const pushTo = () => router.push(push);
 
   return (
-    <button type="button" onClick={() => router.push(push)}>
+    <button type="button" onClick={pushTo}>
       {children}
     </button>
   );

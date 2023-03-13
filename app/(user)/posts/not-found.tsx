@@ -1,4 +1,7 @@
-// app/posts/[...slug]/not-found.tsx
+import EmptyState from "../../../components/core/EmptyState";
+
 export default function PostNotFound() {
-  return <p>Uh oh! This post could not be found.</p>;
+  const text = "No posts found!";
+  const button = "View all posts";
+  return <EmptyState text={text} button={button} link="/posts" type="empty" />;
 }

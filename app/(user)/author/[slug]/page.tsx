@@ -25,7 +25,9 @@ export async function generateStaticParams() {
 }
 
 export default function page({ params: { slug } }: Props) {
-  const AuthorDetails = (<AuthorDetailsPage slug={slug} />) as JSX.Element;
+  const AuthorDetails = (
+    <AuthorDetailsPage slug={slug} key={slug} />
+  ) as JSX.Element;
 
   return <>{AuthorDetails}</>;
 }
