@@ -1,5 +1,5 @@
 export const TOSMenu = [
-  { name: "Welcome To BLK Tech ODB Media, inc.", link: "#section1" },
+  { name: "Welcome To BLK Tech On Da Block", link: "#section1" },
   { name: "Interpretation and Definitions", link: "#section2" },
   { name: "Acknowledgment", link: "#section3" },
   {

@@ -55,7 +55,8 @@ export default function Footer() {
               <div className="md:flex md:grid-cols-none items-center text-sm lg:order-first md:justify-center">
                 {/* TODO: Add company name to copyright below */}
                 <p className="text-gray-600 mb-4 w-full flex md:flex md:justify-center ">
-                  Copyright &copy; {date} BLK Tech ODB. All rights reserved
+                  Copyright &copy; {date} BLK Tech On Da Block. All rights
+                  reserved
                 </p>
               </div>
             </div>

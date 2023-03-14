@@ -19,9 +19,9 @@ export default function AboutUs() {
               career by humanizing technology, showcasing many different paths
               and filtering out the noise.
             </p>
-            <h1 className={textStyling.title}>About BLK Tech On Da Block</h1>
+            <h1 className={textStyling.title}>About Noir Tech Tribe</h1>
             <p className={textStyling.body}>
-              BLK Tech On Da Block is a digital publication that focuses on the
+              Noir Tech Tribe is a digital publication that focuses on the
               intersection of technology and the Black community. We are a team
               of Black tech enthusiasts who are passionate about sharing our
               experiences and knowledge with the world. We are committed to
@@ -45,17 +45,17 @@ export default function AboutUs() {
               Contact Us
             </h1>
             <h1 className={textStyling.title}>
-              Would you like to contribute to History Defined?
+              Would you like to contribute to Noir Tech Tribe?
             </h1>
             <p className={`${textStyling.body} text-gray-500`}>
-              Email: contact@blktechodb.com
+              Email: contact@noirtechtribe.com
             </p>
             <p className={`${textStyling.body} text-gray-500`}>
-              Please include “Contribute to BLK Tech ODB” in the subject.
+              Please include “Contribute to Noir Tech Tribe” in the subject.
             </p>
             <h1 className={textStyling.title}>General Questions</h1>
             <p className={`${textStyling.body} text-gray-500`}>
-              Email: contact@blktechodb.com
+              Email: contact@noirtechtribe.com
             </p>
             <p className={`${textStyling.body} text-gray-500`}>
               Please include “General Questions” in the subject.

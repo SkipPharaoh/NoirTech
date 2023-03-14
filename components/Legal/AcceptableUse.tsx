@@ -186,7 +186,7 @@ export default function AcceptableUse() {
               If you have any further questions or comments, you may contact us
               by:{" "}
               <a
-                href="mailto:contact@blktechodb.com"
+                href="mailto:contact@noirtechtribe.com"
                 className={legalTextStyling.link}
               >
                 Our Email

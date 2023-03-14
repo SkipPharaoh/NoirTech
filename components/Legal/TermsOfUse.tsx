@@ -26,19 +26,19 @@ export default function TermsOfUse() {
               ))}
             </ol>
             <h2 id="section1" className={legalTextStyling.title}>
-              1. Welcome to BLK Tech ODB Media, inc.
+              1. Welcome to BLK Tech On Da Block.
             </h2>
 
             <p className={legalTextStyling.body}>
               Welcome to the website, online services and mobile web services of
-              BLK Tech ODB Media, inc. ("BLK Tech ODB Media, inc.", "we," or
-              "us"). These Terms and Conditions (the "Terms and Conditions") are
-              a binding contract between BLK Tech ODB Media, inc. and you and
-              explain the terms and conditions by which you may use and/or
-              access our online and/or mobile services ("our Service"), in
-              connection with www.blktechodb.com, together with any related
-              subsites, sub-domains, mobile and software applications, services,
-              features and/or content associated therewith (collectively, "our
+              BLK Tech On Da Block ("BLK Tech On Da Block", "we," or "us").
+              These Terms and Conditions (the "Terms and Conditions") are a
+              binding contract between BLK Tech On Da Block and you and explain
+              the terms and conditions by which you may use and/or access our
+              online and/or mobile services ("our Service"), in connection with
+              www.noirtechtribe.com, together with any related subsites,
+              sub-domains, mobile and software applications, services, features
+              and/or content associated therewith (collectively, "our
               Websites").
             </p>
             <p className={legalTextStyling.body}>
@@ -55,8 +55,8 @@ export default function TermsOfUse() {
               agents or contractors.
             </p>
             <p className={legalTextStyling.body}>
-              BLK Tech ODB Media, inc. reserves the right to change these Terms
-              and Conditions at any time, and your continued use of our Service
+              BLK Tech On Da Block reserves the right to change these Terms and
+              Conditions at any time, and your continued use of our Service
               after any changes to these Terms and Conditions will be deemed
               acceptance of those changes. If you do not agree to any of these
               Terms and Conditions, do not use or access (or continue to access)
@@ -96,8 +96,8 @@ export default function TermsOfUse() {
                 <p>
                   <strong>Company</strong> (referred to as either &quot;the
                   Company&quot;, &quot;We&quot;, &quot;Us&quot; or
-                  &quot;Our&quot; in this Agreement) refers to BLK Tech ODB
-                  Media, inc, 1234 Main Street, New York, NY 12345.
+                  &quot;Our&quot; in this Agreement) refers to BLK Tech On Da
+                  Block.
                 </p>
               </li>
               <li className={legalTextStyling.body}>
@@ -137,15 +137,15 @@ export default function TermsOfUse() {
               </li>
               <li className={legalTextStyling.body}>
                 <p>
-                  <strong>Website</strong> refers to BLK Tech ODB, accessible
-                  from{" "}
+                  <strong>Website</strong> refers to BLK Tech On Da Block,
+                  accessible from{" "}
                   <a
-                    href="http://www.blktechodb.com"
+                    href="http://www.noirtechtribe.com"
                     rel="external nofollow noopener"
                     target="_blank"
                     className={legalTextStyling.link}
                   >
-                    http://www.blktechodb.com
+                    http://www.noirtechtribe.com
                   </a>
                 </p>
               </li>
@@ -389,10 +389,10 @@ export default function TermsOfUse() {
               <li>
                 By email:{" "}
                 <a
-                  href="mailto:contact@BLKTechODB.com"
+                  href="mailto:contact@noirtechtribe.com"
                   className={legalTextStyling.link}
                 >
-                  contact@BLKTechODB.com
+                  contact@noirtechtribe.com
                 </a>
               </li>
             </ul>

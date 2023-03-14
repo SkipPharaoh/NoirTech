@@ -13,7 +13,7 @@ export default function PrivacyPolicy() {
             </h1>
             <h1 className={legalTextStyling.title}>Who Are We</h1>
             <p className={legalTextStyling.body}>
-              Our website address is: https://www.blktechODB.com
+              Our website address is: https://www.noirtechtribe.com
             </p>
             <h1 className={legalTextStyling.title}>Cookies</h1>
             <p className={legalTextStyling.body}>

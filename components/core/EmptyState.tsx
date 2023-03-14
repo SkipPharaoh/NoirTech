@@ -59,7 +59,7 @@ export default function EmptyState({
             </p>
             <LinkTo href={route}>
               <button
-                className={"border-2 solid rounded p-2 mt-8"}
+                className={"border-2 solid rounded py-2 px-4 mt-8"}
                 style={buttonStyle}
               >
                 {button}
