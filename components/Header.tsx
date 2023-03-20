@@ -4,7 +4,7 @@ import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { useState } from "react";
 import { headerMenu } from "../lib/data/HeaderMenus";
-import Logo from "../public/images/1stLogo.png";
+import IconLogo from "../public/images/1stLogo.png";
 import HeaderButton from "./HeaderButton";
 import LinkTo from "./core/LinkTo";
 
@@ -23,7 +23,7 @@ export default function Header() {
       <div>
         <LinkTo className="flex items-center space-x-2" href="/">
           <Image
-            src={Logo}
+            src={IconLogo}
             width={50}
             height={50}
             alt="Logo"

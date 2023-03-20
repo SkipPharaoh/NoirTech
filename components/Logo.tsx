@@ -1,5 +1,5 @@
 import Image from "next/image";
-import favicon from "../public/favicon.ico";
+import Icon from "../public/images/1stLogo.png";
 
 export default function Logo(props: any) {
   const { renderDefault } = props;
@@ -9,7 +9,7 @@ export default function Logo(props: any) {
       <Image
         width={50}
         height={50}
-        src={favicon}
+        src={Icon}
         alt="Logo"
         className="rounded-full object-cover"
       />
