@@ -2,7 +2,7 @@
 
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { useMutation } from "@tanstack/react-query";
-import { SyntheticEvent } from "react";
+import { BaseSyntheticEvent } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import LinkTo from "./core/LinkTo";
 
@@ -13,6 +13,11 @@ interface FormValues {
 
 interface SuccessMessageProp {
   handleOnReset: () => void;
+}
+
+interface HandleOnSubmitProps {
+  data: SubmitHandler<FormValues>;
+  e: BaseSyntheticEvent;
 }
 
 export default function SubscribeForm() {
@@ -33,7 +38,7 @@ export default function SubscribeForm() {
     subscribe(data)
   );
 
-  const handleOnSubmit = (data, e: SyntheticEvent) => {
+  const handleOnSubmit = ({ data, e }: HandleOnSubmitProps) => {
     e.preventDefault();
     mutate(data);
   };

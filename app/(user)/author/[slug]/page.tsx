@@ -26,6 +26,7 @@ export async function generateStaticParams() {
 
 export default function page({ params: { slug } }: Props) {
   const AuthorDetails = (
+    /* @ts-expect-error Server Component */
     <AuthorDetailsPage slug={slug} key={slug} />
   ) as JSX.Element;
 

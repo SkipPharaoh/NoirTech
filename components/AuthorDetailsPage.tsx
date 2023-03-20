@@ -109,6 +109,7 @@ export default async function AuthorDetailsPage({
         </h2>
       </div>
       <div className="lg:grid lg:grid-cols-3 lg:gap-6 xl:gap-12">
+        {/* @ts-expect-error Server Component */}
         <AuthorRelatedPost author={name} />
       </div>
     </div>
