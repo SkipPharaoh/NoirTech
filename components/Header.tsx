@@ -4,7 +4,7 @@ import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { useState } from "react";
 import { headerMenu } from "../lib/data/HeaderMenus";
-import Logo from "../public/favicon.ico";
+import Logo from "../public/images/1stLogo.png";
 import HeaderButton from "./HeaderButton";
 import LinkTo from "./core/LinkTo";
 
@@ -29,8 +29,11 @@ export default function Header() {
             alt="Logo"
             className="rounded-full"
           />
-          <h1 className="lg:text-2xl md:text-xl xl:text-2xl text-2xl ease-in duration-300">
-            BLK Tech On Da Block
+          <h1
+            className="lg:text-2xl md:text-xl xl:text-2xl text-2xl ease-in duration-300"
+            style={{ fontFamily: "Montserrat ExtraBold Alt1" }}
+          >
+            Noir Tech Tribe
           </h1>
         </LinkTo>
       </div>
