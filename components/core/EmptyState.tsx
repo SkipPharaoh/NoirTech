@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Loading from "public/Images/1stLogo.png";
+import NotFound from "public/Images/404_Not_Found.png";
 import { CSSProperties } from "react";
 import LinkTo from "./LinkTo";
 
@@ -25,10 +27,10 @@ export default function EmptyState({
   textStyle,
   iconStyle,
 }: EmptyStateProps) {
-  const hasIcon = icon ?? "/Images/404_Not_Found.png";
+  const hasIcon = icon ?? NotFound;
   const isLoading = type === "loading";
   const route = link ?? "/";
-  const loadingIcon = isLoading ? "/Images/1stLogo.png" : hasIcon;
+  const loadingIcon = isLoading ? Loading : hasIcon;
 
   return (
     <div
