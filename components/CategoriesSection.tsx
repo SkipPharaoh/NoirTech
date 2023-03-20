@@ -9,7 +9,7 @@ export default function CategoriesSection({
 }: CategoriesSectionProps) {
   const CategoryInfo = categoryInfo.map((category) => {
     const bg = {
-      background: `url('/images/categories/${category.slug.current}.png') no-repeat`,
+      background: `url('/Images/categories/${category.slug.current}.png') no-repeat`,
       maxWidth: "100%",
       height: "auto",
       width: "auto",

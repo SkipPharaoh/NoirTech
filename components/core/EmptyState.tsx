@@ -25,10 +25,10 @@ export default function EmptyState({
   textStyle,
   iconStyle,
 }: EmptyStateProps) {
-  const hasIcon = icon ?? "/images/404_Not_Found.png";
+  const hasIcon = icon ?? "/Images/404_Not_Found.png";
   const isLoading = type === "loading";
   const route = link ?? "/";
-  const loadingIcon = isLoading ? "/images/1stLogo.png" : hasIcon;
+  const loadingIcon = isLoading ? "/Images/1stLogo.png" : hasIcon;
 
   return (
     <div
