@@ -34,12 +34,13 @@ export default function SubscribeForm() {
     }
   };
 
-  const { mutate, isLoading, isSuccess, isError, reset } = useMutation((data) =>
-    subscribe(data)
-  );
+  const { mutate, isLoading, isSuccess, isError, reset } =
+    /* @ts-expect-error */
+    useMutation<FormValues>((data) => subscribe(data));
 
   const handleOnSubmit = ({ data, e }: HandleOnSubmitProps) => {
     e.preventDefault();
+    /* @ts-expect-error */
     mutate(data);
   };
 
@@ -73,6 +74,7 @@ export default function SubscribeForm() {
           <form
             action=""
             className={isLoading ? "bg-gray-100 border-gray-100" : ""}
+            /* @ts-expect-error */
             onSubmit={handleSubmit(handleOnSubmit)}
           >
             <input
