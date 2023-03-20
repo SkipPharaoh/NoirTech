@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Loading from "public/Images/1stLogo.png";
-import NotFound from "public/Images/404_Not_Found.png";
+import NotFound from "public/Images/404_Not_found.png";
 import { CSSProperties } from "react";
 import LinkTo from "./LinkTo";
 
