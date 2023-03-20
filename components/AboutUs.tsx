@@ -48,14 +48,26 @@ export default function AboutUs() {
               Would you like to contribute to Noir Tech Tribe?
             </h1>
             <p className={`${textStyling.body} text-gray-500`}>
-              Email: contact@noirtechtribe.com
+              Email:{" "}
+              <a
+                href="mailto:contact@noirtechtribe.com"
+                className={textStyling.link}
+              >
+                contact@noirtechtribe.com
+              </a>
             </p>
             <p className={`${textStyling.body} text-gray-500`}>
               Please include “Contribute to Noir Tech Tribe” in the subject.
             </p>
             <h1 className={textStyling.title}>General Questions</h1>
             <p className={`${textStyling.body} text-gray-500`}>
-              Email: contact@noirtechtribe.com
+              Email:{" "}
+              <a
+                href="mailto:contact@noirtechtribe.com"
+                className={textStyling.link}
+              >
+                contact@noirtechtribe.com
+              </a>
             </p>
             <p className={`${textStyling.body} text-gray-500`}>
               Please include “General Questions” in the subject.

@@ -2,6 +2,7 @@ import Banner from "../../components/Banner";
 import Divider from "../../components/Divider";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import ReactQueryWrapper from "../../components/core/ReactQueryWrapper";
 import "../../styles/globals.css";
 
 export default function RootLayout({
@@ -19,7 +20,9 @@ export default function RootLayout({
           <div className="container px-4 md:px-6 pb-24">{children}</div>
         </div>
         <Divider />
-        <Footer />
+        <ReactQueryWrapper>
+          <Footer />
+        </ReactQueryWrapper>
       </body>
     </html>
   );

@@ -1,8 +1,8 @@
 import { Icons, footerMenu } from "../lib/data/FooterMenus";
-import BlogSubscription from "./BlogSubscription";
 import Divider from "./Divider";
 import FooterButton from "./FooterButton";
 import SocialIcons from "./SocialIcons";
+import SubscribeForm from "./SubscribeForm";
 
 export default function Footer() {
   const date = new Date().getFullYear();
@@ -43,7 +43,7 @@ export default function Footer() {
               </p>
             </div>
           </section>
-          <BlogSubscription />
+          <SubscribeForm />
         </div>
       </div>
       <Divider />
