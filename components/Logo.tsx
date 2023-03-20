@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Icon from "../public/images/1stLogo.png";
+import Icon from "public/Images/1stLogo.png";
 
 export default function Logo(props: any) {
   const { renderDefault } = props;
