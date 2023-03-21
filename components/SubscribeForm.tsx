@@ -34,7 +34,6 @@ export default function SubscribeForm() {
     useMutation<FormValues>((data) => subscribe(data));
 
   const handleOnSubmit = (data: void, e: BaseSyntheticEvent) => {
-    console.log(data, e);
     e.preventDefault();
     mutate(data);
   };
