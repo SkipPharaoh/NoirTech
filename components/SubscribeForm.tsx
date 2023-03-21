@@ -15,11 +15,6 @@ interface SuccessMessageProp {
   handleOnReset: () => void;
 }
 
-interface HandleOnSubmitProps {
-  data: SubmitHandler<FormValues>;
-  e: BaseSyntheticEvent;
-}
-
 export default function SubscribeForm() {
   const {
     register,
@@ -38,9 +33,9 @@ export default function SubscribeForm() {
     /* @ts-expect-error */
     useMutation<FormValues>((data) => subscribe(data));
 
-  const handleOnSubmit = ({ data, e }: HandleOnSubmitProps) => {
+  const handleOnSubmit = (data: void, e: BaseSyntheticEvent) => {
+    console.log(data, e);
     e.preventDefault();
-    /* @ts-expect-error */
     mutate(data);
   };
 
