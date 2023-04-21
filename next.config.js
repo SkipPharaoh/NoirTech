@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
   experimental: {
     appDir: true,
@@ -8,3 +8,5 @@ module.exports = {
     domains: ["cdn.sanity.io", "img.icons8.com"],
   },
 };
+
+module.exports = nextConfig;

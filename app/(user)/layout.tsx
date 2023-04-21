@@ -1,9 +1,15 @@
+import type { Metadata } from "next";
 import Banner from "../../components/Banner";
 import Divider from "../../components/Divider";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import ReactQueryWrapper from "../../components/core/ReactQueryWrapper";
 import "../../styles/globals.css";
+
+export const metadata: Metadata = {
+  title: "Noir Tech Tribe",
+  description: "Home",
+};
 
 export default function RootLayout({
   children,
