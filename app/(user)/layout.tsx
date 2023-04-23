@@ -7,7 +7,7 @@ import ReactQueryWrapper from "../../components/core/ReactQueryWrapper";
 import "../../styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "Noir Tech Tribe",
+  title: { default: "Noir Tech Tribe", template: "%s | Noir Tech Tribe" },
   description: "Home",
 };
 

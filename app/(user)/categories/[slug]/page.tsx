@@ -1,10 +1,11 @@
+import useContentQuery from "@/components/hooks/useContentQuery";
+import type { Metadata } from "next";
 import { groq } from "next-sanity";
 import Image from "next/image";
 import LinkTo from "../../../../components/core/LinkTo";
 import { client } from "../../../../lib/sanity.client";
 import urlFor from "../../../../lib/urlFor";
 
-export const dynamic = "force-dynamic";
 interface Props {
   params: {
     slug: string;
@@ -14,23 +15,7 @@ interface Props {
   };
 }
 
-export const revalidate = 60;
-
-export async function generateStaticParams() {
-  const query = groq`*[_type == "post"]
-    {
-        slug,
-    }`;
-
-  const slugs: Post[] = await client.fetch(query);
-  const slugRoutes = slugs.map((slug) => slug.slug.current);
-
-  return slugRoutes.map((slug) => ({
-    slug,
-  }));
-}
-
-export default async function Post({ params: { slug }, searchParams }: Props) {
+const searchWordQuery = (slug: string) => {
   // console.log(searchParams);
 
   /*
@@ -57,15 +42,43 @@ export default async function Post({ params: { slug }, searchParams }: Props) {
 
   const searchWord = toTitleCase(word);
 
-  const query = groq`*[_type == "post" && categories[]->title match "${searchWord}"]
-    {
-        ...,
-        author->,
-        categories[]->,
-    }
-    `;
+  return searchWord;
+};
 
-  const booksPost: Post[] = await client.fetch(query, { slug });
+export async function generateMetadata({
+  params: { slug },
+  searchParams,
+}: Props): Promise<Metadata> {
+  const searchWord = searchWordQuery(slug);
+
+  return {
+    title: searchWord,
+    description: searchWord,
+  };
+}
+
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const query = groq`*[_type == "post"]
+    {
+        slug,
+    }`;
+
+  const slugs: Post[] = await client.fetch(query);
+  const slugRoutes = slugs.map((slug) => slug.slug.current);
+
+  return slugRoutes.map((slug) => ({
+    slug,
+  }));
+}
+
+export default async function Post({ params: { slug }, searchParams }: Props) {
+  const { getCategoryData } = useContentQuery();
+
+  const searchWord = searchWordQuery(slug);
+
+  const booksPost = await getCategoryData(searchWord, slug);
 
   const BlogPosts = booksPost.map((blogPost) => {
     const blogCategories =

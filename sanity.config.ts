@@ -12,8 +12,8 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!;
 
 export default defineConfig({
   basePath: "/studio",
-  name: "BLK_Hood_Tech",
-  title: "BLK Hood Tech Studio",
+  name: "Noir_Tech_Tribe",
+  title: "Noir Tech Tribe Studio",
   projectId,
   dataset,
   plugins: [

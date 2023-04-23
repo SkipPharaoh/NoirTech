@@ -1,5 +1,6 @@
+import useContentQuery from "@/components/hooks/useContentQuery";
 import { PortableText } from "@portabletext/react";
-import { groq } from "next-sanity";
+import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Divider from "../../../../components/Divider";
@@ -16,16 +17,23 @@ interface Props {
   };
 }
 
-export default async function Post({ params: { slug } }: Props) {
-  const query = groq`*[_type == "post" && slug.current == $slug][0]
-    {
-        ...,
-        author->,
-        categories[]->,
-    }
-    `;
+export async function generateMetadata({
+  params: { slug },
+}: Props): Promise<Metadata> {
+  const { getPostData } = useContentQuery();
 
-  const post: Post = await client.fetch(query, { slug });
+  const post = await getPostData(slug);
+
+  return {
+    title: post.title,
+    description: post.description,
+  };
+}
+
+export default async function Post({ params: { slug } }: Props) {
+  const { getPostData } = useContentQuery();
+
+  const post = await getPostData(slug);
 
   if (!post) {
     notFound();
