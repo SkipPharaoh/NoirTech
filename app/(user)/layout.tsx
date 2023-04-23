@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import Banner from "../../components/Banner";
 import Divider from "../../components/Divider";
@@ -23,7 +24,10 @@ export default function RootLayout({
         <Banner />
         <Divider />
         <div className="max-w-7xl mx-auto">
-          <div className="container px-4 md:px-6 pb-24">{children}</div>
+          <div className="container px-4 md:px-6 pb-24">
+            {children}
+            <Analytics />
+          </div>
         </div>
         <Divider />
         <ReactQueryWrapper>
