@@ -25,8 +25,27 @@ export async function generateMetadata({
   const post = await getPostData(slug);
 
   return {
+    metadataBase: new URL("https://www.noirtechtribe.com"),
     title: post.title,
     description: post.description,
+    openGraph: {
+      title: `${post.title} | Noir Tech Tribe`,
+      description: post.description,
+      url: `https://www.noirtechtribe.com/posts/${slug}`,
+      images: [
+        {
+          url: `${post.mainImage}`,
+          width: 1200,
+          height: 630,
+          alt: `${post.title}`,
+        },
+      ],
+    },
+    twitter: {
+      site: "@noirtechtribe",
+      title: post.title,
+      description: post.description,
+    },
   };
 }
 

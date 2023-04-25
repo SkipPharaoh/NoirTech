@@ -4,6 +4,7 @@ import { groq } from "next-sanity";
 interface ContentQuery {
   getCategoryData: (searchWord: string, slug: string) => Promise<Post[]>;
   getPostData: (slug: string) => Promise<Post>;
+  getAuthorData: (slug: string) => Promise<Author>;
 }
 
 export default function useContentQuery(): ContentQuery {
@@ -35,8 +36,21 @@ export default function useContentQuery(): ContentQuery {
     return post;
   };
 
+  const getAuthorData = async (slug: string) => {
+    const query = groq`*[_type == "author" && slug.current == $slug][0]
+    {
+        ...,
+    }
+    `;
+
+    const author: Author = await client.fetch(query, { slug });
+
+    return author;
+  };
+
   return {
     getCategoryData,
     getPostData,
+    getAuthorData,
   };
 }

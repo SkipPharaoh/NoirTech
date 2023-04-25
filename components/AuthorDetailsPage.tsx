@@ -1,12 +1,11 @@
 import { PortableText } from "@portabletext/react";
-import { groq } from "next-sanity";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { client } from "../lib/sanity.client";
 import urlFor from "../lib/urlFor";
 import AuthorRelatedPost from "./AuthorRelatedPost";
 import { RichTextComponents } from "./RichTextComponents";
 import LinkTo from "./core/LinkTo";
+import useContentQuery from "./hooks/useContentQuery";
 
 interface AuthorDetailsPageProps {
   slug: string;
@@ -15,13 +14,9 @@ interface AuthorDetailsPageProps {
 export default async function AuthorDetailsPage({
   slug,
 }: AuthorDetailsPageProps) {
-  const query = groq`*[_type == "author" && slug.current == $slug][0]
-    {
-        ...,
-    }
-    `;
+  const { getAuthorData } = useContentQuery();
 
-  const author: Author = await client.fetch(query, { slug });
+  const author = await getAuthorData(slug);
 
   const { bio, image, name, profession, staff, socials } = author;
 

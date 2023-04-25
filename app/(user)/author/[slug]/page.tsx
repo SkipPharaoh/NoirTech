@@ -1,3 +1,5 @@
+import useContentQuery from "@/components/hooks/useContentQuery";
+import type { Metadata } from "next";
 import { groq } from "next-sanity";
 import AuthorDetailsPage from "../../../../components/AuthorDetailsPage";
 import { client } from "../../../../lib/sanity.client";
@@ -22,6 +24,33 @@ export async function generateStaticParams() {
   return slugRoutes.map((slug) => ({
     slug,
   }));
+}
+
+export async function generateMetadata({
+  params: { slug },
+}: Props): Promise<Metadata> {
+  const { getAuthorData } = useContentQuery();
+
+  const author = await getAuthorData(slug);
+
+  return {
+    metadataBase: new URL("https://www.noirtechtribe.com"),
+    title: `${author.name} - ${author.profession}`,
+    description: author.profession,
+    openGraph: {
+      title: `${author.name} | Noir Tech Tribe`,
+      description: author.profession,
+      url: `https://www.noirtechtribe.com/posts/${slug}`,
+      images: [
+        {
+          url: `${author.image}`,
+          width: 1200,
+          height: 630,
+          alt: `${author.name}`,
+        },
+      ],
+    },
+  };
 }
 
 export default function page({ params: { slug } }: Props) {

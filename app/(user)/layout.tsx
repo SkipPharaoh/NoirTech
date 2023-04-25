@@ -8,8 +8,40 @@ import ReactQueryWrapper from "../../components/core/ReactQueryWrapper";
 import "../../styles/globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "Noir Tech Tribe", template: "%s | Noir Tech Tribe" },
-  description: "Home",
+  title: {
+    default: "Noir Tech Tribe",
+    template: "%s | Noir Tech Tribe",
+  },
+  description: "Empowering Black professionals in the technology industry",
+  openGraph: {
+    title: "Noir Tech Tribe",
+    description:
+      "Empowering Black professionals in the technology industry by providing knowledge and resources to navigate their careers",
+    url: "https://www.noirtechtribe.com",
+    siteName: "Noir Tech Tribe",
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  twitter: {
+    site: "@noirtechtribe",
+  },
+  icons: {
+    shortcut: "/favicon.ico",
+  },
+  // verification: {
+  //   google: "google-site-verification-code",
+  // },
 };
 
 export default function RootLayout({

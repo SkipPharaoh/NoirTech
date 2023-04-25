@@ -52,8 +52,16 @@ export async function generateMetadata({
   const searchWord = searchWordQuery(slug);
 
   return {
-    title: searchWord,
-    description: searchWord,
+    title: `${searchWord} | Categories | Noir Tech Tribe`,
+    description:
+      "Explore the different categories of content on Noir Tech Tribe, including career advice, career resources, how-to guides, personal stories, reviews, and science and technology topics.",
+    openGraph: {
+      title: `${searchWord} | Categories | Noir Tech Tribe`,
+      description:
+        "Explore the different categories of content on Noir Tech Tribe, including career advice, career resources, how-to guides, personal stories, reviews, and science and technology topics.",
+      url: `https://www.noirtechtribe.com/categories/${slug}`,
+      siteName: "Noir Tech Tribe",
+    },
   };
 }
 
