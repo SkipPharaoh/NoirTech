@@ -1,3 +1,5 @@
+import CookieBanner from "@/components/core/CookieBanner";
+import GoogleAnalytics from "@/lib/google/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import Banner from "../../components/Banner";
@@ -49,8 +51,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
+
   return (
     <html>
+      <GoogleAnalytics GA_MEASUREMENT_ID={GA_TRACKING_ID} />
       <body className="">
         <Header />
         <Banner />
@@ -65,6 +70,8 @@ export default function RootLayout({
         <ReactQueryWrapper>
           <Footer />
         </ReactQueryWrapper>
+
+        <CookieBanner />
       </body>
     </html>
   );
