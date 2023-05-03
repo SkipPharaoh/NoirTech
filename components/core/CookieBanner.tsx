@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import LinkTo from "./LinkTo";
 
 export default function CookieBanner() {
-  const [cookieConsent, setCookieConsent] = useState<boolean>(true);
+  const [cookieConsent, setCookieConsent] = useState<boolean | null>(null);
 
   useEffect(() => {
     const storedCookieConsent = getLocalStorage("cookie_consent", null);
@@ -28,14 +28,14 @@ export default function CookieBanner() {
   return (
     <section
       className={`${
-        cookieConsent != null ? "hidden" : "flex"
-      } max-w-md p-4 mx-auto bg-white border border-gray-200 dark:bg-gray-800 left-12 bottom-16 dark:border-gray-700 rounded-2xl`}
+        cookieConsent !== null ? "hidden" : "fixed inset-x-0"
+      } max-w-md p-4 mx-auto bg-white border border-gray-200 dark:bg-gray-800 bottom-16 dark:border-gray-700 rounded-2xl xs:w-full xs:max-w-screen-sm`}
     >
-      <h2 className="font-semibold text-gray-800 dark:text-white">
+      <h2 className="font-semibold text-gray-800 dark:text-white text-center">
         🍪 Cookie Notice
       </h2>
 
-      <p className="mt-4 text-sm text-gray-600 dark:text-gray-300">
+      <p className="mt-4 text-sm text-gray-600 dark:text-gray-300 text-center">
         We use cookies to ensure that we give you the best experience on our
         website.{" "}
         <LinkTo href="#" className="text-blue-500 hover:underline">
