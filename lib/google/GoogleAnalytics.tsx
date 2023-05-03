@@ -43,6 +43,7 @@ export default function GoogleAnalytics({
                 
                 gtag('config', '${GA_MEASUREMENT_ID}', {
                     page_path: window.location.pathname,
+                    cookie_flags: 'SameSite=None;Secure',
                 });
                 `,
         }}

@@ -1,10 +1,17 @@
 "use client";
-import { getLocalStorage, setLocalStorage } from "@/lib/storageHelper";
+
+import {
+  CookieConsent,
+  getLocalStorage,
+  setLocalStorage,
+} from "@/lib/storageHelper";
 import { useEffect, useState } from "react";
 import LinkTo from "./LinkTo";
 
 export default function CookieBanner() {
-  const [cookieConsent, setCookieConsent] = useState<boolean | null>(null);
+  const [cookieConsent, setCookieConsent] = useState<CookieConsent | null>(
+    null
+  );
 
   useEffect(() => {
     const storedCookieConsent = getLocalStorage("cookie_consent", null);
@@ -13,24 +20,61 @@ export default function CookieBanner() {
   }, [setCookieConsent]);
 
   useEffect(() => {
-    const newValue = cookieConsent ? "granted" : "denied";
+    if (cookieConsent !== null) {
+      setLocalStorage("cookie_consent", cookieConsent);
 
-    window.gtag("consent", "update", {
-      analytics_storage: newValue,
-    });
+      const newValue = cookieConsent ? "granted" : "denied";
 
-    setLocalStorage("cookie_consent", cookieConsent);
+      window.gtag("consent", "update", {
+        analytics_storage: newValue,
+      });
 
-    //For Testing
-    console.log("Cookie Consent: ", cookieConsent);
+      //For Testing
+      console.log("Cookie Consent: ", JSON.stringify(cookieConsent), newValue);
+    }
   }, [cookieConsent]);
 
-  return (
-    <section
-      className={`${
-        cookieConsent !== null ? "hidden" : "fixed inset-x-0"
-      } max-w-md p-4 mx-auto bg-white border border-gray-200 dark:bg-gray-800 bottom-16 dark:border-gray-700 rounded-2xl xs:w-full xs:max-w-screen-sm`}
-    >
+  const handleOnAccept = () => {
+    const futureDate = new Date();
+    futureDate.setMonth(futureDate.getMonth() + 6);
+    const cookieConsentData = {
+      consent: true,
+      expiryDate: futureDate.toISOString(),
+    };
+    setCookieConsent(cookieConsentData);
+    setLocalStorage("cookie_consent", cookieConsentData);
+  };
+
+  const handleOnDecline = () => {
+    const futureDate = new Date();
+    futureDate.setMonth(futureDate.getMonth() + 1);
+    const cookieConsentData = {
+      consent: false,
+      expiryDate: futureDate.toISOString(),
+    };
+    setCookieConsent(cookieConsentData);
+    setLocalStorage("cookie_consent", cookieConsentData);
+  };
+
+  const shouldShowBanner = (): boolean => {
+    if (!cookieConsent) {
+      return true;
+    }
+
+    const now = new Date().getTime();
+    const expiryDate = new Date(cookieConsent.expiryDate).getTime();
+
+    if (now >= expiryDate) {
+      return true;
+    }
+
+    return false;
+  };
+
+  const isShowingBanner = shouldShowBanner();
+
+  return isShowingBanner ? (
+    <section className="fixed inset-x-0 max-w-md p-4 mx-auto bg-white border border-gray-200 dark:bg-gray-800 bottom-16 dark:border-gray-700 rounded-2xl xs:w-full xs:max-w-screen-sm">
       <h2 className="font-semibold text-gray-800 dark:text-white text-center">
         🍪 Cookie Notice
       </h2>
@@ -46,18 +90,18 @@ export default function CookieBanner() {
 
       <div className="flex items-center justify-center mt-4 gap-x-4 shrink-0">
         <button
-          onClick={() => setCookieConsent(true)}
+          onClick={handleOnAccept}
           className=" text-xs bg-gray-900 font-medium rounded-lg hover:bg-gray-700 text-white px-4 py-2.5 duration-300 transition-colors focus:outline-none"
         >
           Accept
         </button>
         <button
-          onClick={() => setCookieConsent(false)}
+          onClick={handleOnDecline}
           className=" text-xs bg-gray-900 font-medium rounded-lg hover:bg-gray-700 text-white px-4 py-2.5 duration-300 transition-colors focus:outline-none"
         >
           Decline
         </button>
       </div>
     </section>
-  );
+  ) : null;
 }

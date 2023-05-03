@@ -1,4 +1,5 @@
 import CookieBanner from "@/components/core/CookieBanner";
+import DynamicComponentWithNoSSR from "@/components/core/DynamicComponentWithNoSSR";
 import GoogleAnalytics from "@/lib/google/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
@@ -71,6 +72,7 @@ export default function RootLayout({
           <Footer />
         </ReactQueryWrapper>
 
+        <DynamicComponentWithNoSSR />
         <CookieBanner />
       </body>
     </html>
