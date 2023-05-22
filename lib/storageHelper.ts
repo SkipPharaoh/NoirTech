@@ -9,15 +9,11 @@ export function getLocalStorage(
   key: string,
   defaultValue: CookieConsent | null
 ): CookieConsent | null {
-  if (typeof localStorage !== "undefined") {
-    const stickyValue = localStorage.getItem(key);
+  const stickyValue = localStorage.getItem(key);
 
-    return stickyValue !== null && stickyValue !== "undefined"
-      ? JSON.parse(stickyValue)
-      : defaultValue;
-  } else {
-    return defaultValue;
-  }
+  return stickyValue !== null && stickyValue !== "undefined"
+    ? JSON.parse(stickyValue)
+    : defaultValue;
 }
 
 export function setLocalStorage(key: string, value: CookieConsent) {

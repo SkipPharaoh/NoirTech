@@ -23,7 +23,7 @@ export default function CookieBanner() {
     if (cookieConsent !== null) {
       setLocalStorage("cookie_consent", cookieConsent);
 
-      const newValue = cookieConsent ? "granted" : "denied";
+      const newValue = cookieConsent?.consent ? "granted" : "denied";
 
       window.gtag("consent", "update", {
         analytics_storage: newValue,
@@ -37,34 +37,36 @@ export default function CookieBanner() {
   const handleOnAccept = () => {
     const futureDate = new Date();
     futureDate.setMonth(futureDate.getMonth() + 6);
+
     const cookieConsentData = {
       consent: true,
       expiryDate: futureDate.toISOString(),
     };
+
     setCookieConsent(cookieConsentData);
-    setLocalStorage("cookie_consent", cookieConsentData);
   };
 
   const handleOnDecline = () => {
     const futureDate = new Date();
     futureDate.setMonth(futureDate.getMonth() + 1);
+
     const cookieConsentData = {
       consent: false,
       expiryDate: futureDate.toISOString(),
     };
+
     setCookieConsent(cookieConsentData);
-    setLocalStorage("cookie_consent", cookieConsentData);
   };
 
   const shouldShowBanner = (): boolean => {
-    if (!cookieConsent) {
+    if (cookieConsent == null) {
       return true;
     }
 
     const now = new Date().getTime();
     const expiryDate = new Date(cookieConsent.expiryDate).getTime();
 
-    if (now >= expiryDate) {
+    if (now >= expiryDate || cookieConsent == null) {
       return true;
     }
 
@@ -73,8 +75,10 @@ export default function CookieBanner() {
 
   const isShowingBanner = shouldShowBanner();
 
-  return isShowingBanner ? (
-    <section className="fixed inset-x-0 max-w-md p-4 mx-auto bg-white border border-gray-200 dark:bg-gray-800 bottom-16 dark:border-gray-700 rounded-2xl xs:w-full xs:max-w-screen-sm">
+  return !!isShowingBanner ? (
+    <section
+      className={`flex flex-col fixed bottom-6 left-0 right-0 max-w-md p-4 mx-auto bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 rounded-2xl xs:w-full xs:max-w-screen-sm`}
+    >
       <h2 className="font-semibold text-gray-800 dark:text-white text-center">
         🍪 Cookie Notice
       </h2>
@@ -91,13 +95,13 @@ export default function CookieBanner() {
       <div className="flex items-center justify-center mt-4 gap-x-4 shrink-0">
         <button
           onClick={handleOnAccept}
-          className=" text-xs bg-gray-900 font-medium rounded-lg hover:bg-gray-700 text-white px-4 py-2.5 duration-300 transition-colors focus:outline-none"
+          className="text-xs bg-gray-900 font-medium rounded-lg hover:bg-gray-700 text-white px-4 py-2.5 duration-300 transition-colors focus:outline-none"
         >
           Accept
         </button>
         <button
           onClick={handleOnDecline}
-          className=" text-xs bg-gray-900 font-medium rounded-lg hover:bg-gray-700 text-white px-4 py-2.5 duration-300 transition-colors focus:outline-none"
+          className="text-xs bg-gray-900 font-medium rounded-lg hover:bg-gray-700 text-white px-4 py-2.5 duration-300 transition-colors focus:outline-none"
         >
           Decline
         </button>
