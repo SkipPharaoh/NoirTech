@@ -8,7 +8,6 @@ import RelatedBlog from "../../../../components/RelatedBlog";
 import { RichTextComponents } from "../../../../components/RichTextComponents";
 import Route from "../../../../components/core/Route";
 import ShareButton from "../../../../components/core/ShareButton";
-import { client } from "../../../../lib/sanity.client";
 import urlFor from "../../../../lib/urlFor";
 
 interface Props {
@@ -58,20 +57,6 @@ export default async function Post({ params: { slug } }: Props) {
     notFound();
   }
 
-  const incrementPostViews = async () => {
-    await client
-      .patch(post._id)
-      .inc({ views: 1 })
-      .commit()
-      .then(() => {
-        console.log("Views incremented");
-      })
-      .catch((error) => {
-        console.log("Views not incremented");
-      });
-  };
-
-  // incrementPostViews();
   type RelatedPosts = Awaited<ReturnType<typeof RelatedBlog>>;
   const relatedPosts: RelatedPosts = await RelatedBlog({
     category: post.categories[0].title,

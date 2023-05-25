@@ -1,3 +1,4 @@
+import CodeInput from "@/lib/CodeInput";
 import Image from "next/image";
 import Link from "next/link";
 import urlFor from "../lib/urlFor";
@@ -15,6 +16,12 @@ export const RichTextComponents = {
           />
         </div>
       );
+    },
+    code: ({ value }: any) => {
+      if (!value || !value.code) {
+        return null;
+      }
+      return <CodeInput code={value.code} language={value.language} />;
     },
   },
   list: {
