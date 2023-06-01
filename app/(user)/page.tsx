@@ -1,5 +1,5 @@
 import { groq } from "next-sanity";
-import { previewData } from "next/headers";
+import { draftMode } from "next/headers";
 import CategoriesSection from "../../components/CategoriesSection";
 import LatestBlogList from "../../components/LatestBlogList";
 import PopularSection from "../../components/PopularSection";
@@ -32,10 +32,9 @@ export const categoryQuery = groq`*[_type == "category"]{
 
 export const revalidate = 60;
 
-type AppPreviewData = { token: string } | undefined;
-
 export default async function HomePage() {
-  if ((previewData() as AppPreviewData)?.token) {
+  const { isEnabled } = draftMode();
+  if (isEnabled) {
     return (
       <PreviewSuspense
         fallback={
@@ -51,7 +50,6 @@ export default async function HomePage() {
           trendingQuery={trendingQuery}
           popularQuery={popularQuery}
           categoryQuery={categoryQuery}
-          token={(previewData() as AppPreviewData)!.token}
         />
       </PreviewSuspense>
     );

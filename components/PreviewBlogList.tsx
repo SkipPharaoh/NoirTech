@@ -11,7 +11,6 @@ type Props = {
   trendingQuery: string;
   popularQuery: string;
   categoryQuery: string;
-  token: string;
 };
 
 export default function PreviewBlogList({
@@ -19,7 +18,6 @@ export default function PreviewBlogList({
   trendingQuery,
   popularQuery,
   categoryQuery,
-  token,
 }: Props) {
   const posts = usePreview(null, query);
   const trendingPosts = usePreview(null, trendingQuery);

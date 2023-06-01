@@ -25,7 +25,7 @@ export default async function AuthorDetailsPage({
   ) : (
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident expedita unde alias aspernatur nobis eaque suscipit nostrum repellendus itaque corporis, saepe voluptatem optio quaerat consequatur autem aperiam cum maxime sint?"
   );
-  const hasImage = !!image ? urlFor(image).url() : "/Images/author/author1.jpg";
+  const hasImage = !!image ? urlFor(image).url() : "/Images/author/author1.png";
   const hasName = !!name ? name : "Author Name";
   const hasProfession = !!profession
     ? profession
